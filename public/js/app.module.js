@@ -1,1 +1,7 @@
-console.log('JS loaded!');
+(function() {
+  'use strict';
+
+  angular
+    .module('app', ['ui.router']);
+
+})();
