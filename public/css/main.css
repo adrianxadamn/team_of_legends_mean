@@ -24,16 +24,34 @@ img {
   border-bottom: 5px solid darkgoldenrod;
   width: 100%;
   height: 104%;
-  text-align: center;
+  /*text-align: center;*/
   margin: auto;
 }
 
-button {
-
+#landing-page {
+  text-align: center;
 }
 
 p {
   color: darkgoldenrod;
 }
 
+.container > h1, .container * label, .container * button  {
+  text-align: center;
+  color: darkgoldenrod;
+}
 
+.container {
+  /*background-color: blue;*/
+  height: 80%;
+  width: 100%;
+  margin: auto;
+}
+
+#columns {
+  display: flex;
+}
+
+#login-container {
+  border-right: 5px solid darkgoldenrod;
+}

@@ -13,7 +13,17 @@
   $stateProvider
     .state("landing_page", {
       url: "/",
-      templateUrl: "/js/app/layouts/landing_page.html"
+      templateUrl: "/js/app/layouts/landing_page.html",
+      controller: "LandingPageController",
+      controllerAs: "vm"
+    })
+    .state("home", {
+      url: "/home",
+      templateUrl: "/js/app/home/home.html"
+    })
+    .state("signin", {
+      url: "/signin",
+      templateUrl: "/js/app/login/signin.html"
     });
 
   $urlRouterProvider.otherwise("/");
