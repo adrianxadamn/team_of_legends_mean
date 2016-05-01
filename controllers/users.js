@@ -1,29 +1,51 @@
 // Require resource's model(s).
 var User = require("../models/user");
 
-var index = function(req, res, next){
-  User.find({}, function(err, users) {
-    if (err) {
-      res.json({message: err});
-    } else {
-      res.render('users/index', {users: users});
-    }
-  });
+function create(req, res, next) {
+  if (!req.body.password) {
+    return res.status(422).send('Missing required fields');
+  }
+  User
+    .create(req.body)
+    .then(function(user) {
+      res.json({
+        success: true,
+        message: 'Successfully created user.',
+        data: {
+          email: user.email,
+          username:  user.username,
+          picture_url: user.picture_url,
+          id:    user._id
+        }
+      });
+    }).catch(function(err) {
+      if (err.message.match(/E11000/)) {
+        err.status = 409;
+      } else {
+        err.status = 422;
+      }
+      next(err);
+    });
 };
 
-var show = function(req, res, next){
-  User.findById(req.params.id, function(err, user) {
-    if (err) {
-      res.json({message: 'Could not find user because ' + err});
-    } else if (!user) {
-      res.json({message: 'No user with this id.'});
-    } else {
-      res.render('users/show', {user: user});
-    }
-  });
+
+function me(req, res, next) {
+  User
+    .findOne({email: req.decoded.email}).exec()
+    .then(function(user) {
+      res.json({
+        success: true,
+        message: 'Successfully retrieved user data.',
+        data: user
+      });
+    })
+    .catch(function(err) {
+      next(err);
+    });
 };
+
 
 module.exports = {
-  index: index,
-  show:  show
+  create: create,
+  me:  me
 };

@@ -23,7 +23,9 @@
     })
     .state("signin", {
       url: "/signin",
-      templateUrl: "/js/app/login/signin.html"
+      templateUrl: "/js/app/login/signin.html",
+      controller: "LoginController",
+      controllerAs: "vm"
     });
 
   $urlRouterProvider.otherwise("/");

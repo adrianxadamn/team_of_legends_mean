@@ -22,8 +22,8 @@ function create(req, res, next) {
       } else {
         var token = generate({
             email: user.email,
-            name:  user.username,
-            picture_url: user.picture_url,
+            ign:  user.ign,
+            // primary_role: user.primary_role,
             _id: user._id,
             use:   'public_api'
         });
