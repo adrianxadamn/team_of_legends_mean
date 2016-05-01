@@ -20,7 +20,6 @@
 
     return service;
 
-
     function logIn(data) {
 
       var promise = $http({

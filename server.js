@@ -4,7 +4,8 @@ var favicon      = require('serve-favicon');
 var logger       = require('morgan');
 var bodyParser   = require('body-parser');
 var debug        = require('debug')('app:http');
-var cookieParser = require('cookie-parser');
+// var cookieParser = require('cookie-parser');
+// var session      = require('express-session');
 
 // Load local libraries.
 var env      = require('./config/environment'),
@@ -128,3 +129,5 @@ function addFailedAuthHeader(err, req, res, next) {
 }
 
 module.exports = app;
+
+
