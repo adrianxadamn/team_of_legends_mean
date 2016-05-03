@@ -2,7 +2,9 @@ body {
   margin: 0px;
   font-size: 14px;
   background-image: url("../images/wallpaper.jpg");
-  background-size: 100%;
+  background-size: 120%;
+  background-repeat: repeat-y repeat-x;
+  background-position: center top;
 }
 
 img {
