@@ -17,7 +17,7 @@ var userSchema = new mongoose.Schema({
                       type: mongoose.Schema.Types.ObjectId,
                       ref: "User"
                     },
-  profile_default:  { type: String },
+  profile_defaultId:  { type: String },
   tier:             { type: String },
   division:         { type: String },
   champion_pool:    [championSchema],

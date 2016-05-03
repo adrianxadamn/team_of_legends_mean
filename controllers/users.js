@@ -19,13 +19,12 @@ function create(req, res, next) {
     console.log("summonerId:", jsonData[searchIgn].id);
 
     User
-      .create({
-        email: req.body.email,
-        ign:   req.body.ign,
-        primary_role : req.body.primary_role,
-        summonerId: jsonData[searchIgn].id
-      })
+      .create(req.body)
       .then(function(user) {
+        console.log("check this user:", user);
+        user.summonerId = jsonData[searchIgn].id;
+        user.profile_defaultId = jsonData[searchIgn].profileIconId;
+        user.save();
         res.json({
           success: true,
           message: 'Successfully created user.'

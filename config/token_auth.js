@@ -17,13 +17,15 @@ function create(req, res, next) {
   User
     .findOne({email: req.body.email}).exec()
     .then(function(user) {
+      console.log("token - user:", user);
       if (!user || !user.verifyPasswordSync(req.body.password)) {
         res.sendStatus(403);
       } else {
         var token = generate({
             email: user.email,
             ign:  user.ign,
-            // primary_role: user.primary_role,
+            primary_role: user.primary_role,
+            summonerId: user.summonerId,
             _id: user._id,
             use:   'public_api'
         });
