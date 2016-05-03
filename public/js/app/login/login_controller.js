@@ -10,17 +10,19 @@
   function LoginController($log, userService, $state, $http, authService) {
     $log.info("LoginController is in da house!")
     var vm = this;
+
+
     //Step 1. Create a User
     ////creates a new User into the database
     vm.signUp = function() {
       $log.info("trying to create user..");
       $log.info("current user data trying to create:", vm.createUser);
 
-      //Step 1.1 Create User through UserService
+      //Step 2. Create User through UserService
       userService
         .create(vm.createUser).then(
           function() {
-            // $state.go("home");
+            $state.go("home");
           },
           function(err) {
             if (err.status === 409) {
@@ -30,6 +32,31 @@
             }
           }
         );
+    };
+
+
+    //Logs in an already created user from the database
+    vm.LogIn = function() {
+      if (vm.currentLogInInfo.email === undefined ||
+          vm.currentLogInInfo.password === undefined) {
+            //insert conflict toggle here;
+
+      } else {
+
+      $log.info("Logging in:", vm.currentLogInInfo);
+
+      authService
+        .logIn(vm.currentLogInInfo)
+        .then(
+            function(decodedToken) {
+              $state.go("home");
+            },
+            function(err) {
+              $log.info("err:", err);
+            }
+        );
+
+      }
     };
 
   };
