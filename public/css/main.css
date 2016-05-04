@@ -57,3 +57,32 @@ p {
 #login-container {
   border-right: 5px solid darkgoldenrod;
 }
+
+/******NAVBAR******/
+/******************/
+
+.navbar-container {
+  height: 46px;
+  border-bottom: 1px solid rgb(184, 134, 11);
+  background: black;
+  position: fixed;
+  width: 100%;
+}
+
+.navbar-container * p {
+  display: inline-block;
+}
+
+.navbar-col1 {
+  float: left;
+  padding-top: 12px;
+}
+
+.navbar-col3 {
+  float: right;
+  padding-top: 12px;
+}
+
+
+/*font-family: 'Architects Daughter', cursive;*/
+
