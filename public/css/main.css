@@ -7,7 +7,7 @@ body {
   background-position: center top;
 }
 
-img {
+#landing-image {
   width: 80%;
   /*margin-top: 100px;*/
   /*margin-bottom: 200px;*/
@@ -69,20 +69,33 @@ p {
   width: 100%;
 }
 
-.navbar-container * p {
+.navbar-buttons-container * p {
   display: inline-block;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  margin: auto 10px;
 }
 
 .navbar-col1 {
   float: left;
-  padding-top: 12px;
+  position: absolute;
+  top: 10px;
+  left: 8%;
 }
 
 .navbar-col3 {
   float: right;
-  padding-top: 12px;
+  position: absolute;
+  right: 8%;
+  top: 10px;
+}
+
+.navbar-image {
+  text-align: center;
+  width: 400px;
+  margin: auto;
 }
 
 
-/*font-family: 'Architects Daughter', cursive;*/
+
 
