@@ -1,42 +1,61 @@
 // Require resource's model(s).
 var request = require('request');
-var User = require("../models/user");
+var User    = require("../models/user");
+var util    = require("util");
 
 function create(req, res, next) {
   if (!req.body.password) {
     return res.status(422).send('Missing required fields');
   }
 
-  console.log("req.body:", req.body);
-
-  var baseUri = 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/';
+  var baseUriFindSummoner = 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/';
   var searchIgn = req.body.ign;
   var apiKey = 'da00a520-06f1-4359-a686-4f48691f19a4';
-  var buildUri = baseUri + searchIgn + '?api_key=' + apiKey;
-  request.get(buildUri, function(err, data) {
-    var jsonData = JSON.parse(data.body);
-    console.log("jsonData:", jsonData);
-    console.log("summonerId:", jsonData[searchIgn].id);
+  var buildUriFindSummoner = baseUriFindSummoner + searchIgn + '?api_key=' + apiKey;
 
-    User
-      .create(req.body)
-      .then(function(user) {
-        console.log("check this user:", user);
-        user.summonerId = jsonData[searchIgn].id;
-        user.profile_defaultId = jsonData[searchIgn].profileIconId;
-        user.save();
-        res.json({
-          success: true,
-          message: 'Successfully created user.'
+  request.get(buildUriFindSummoner, function(err, data) {
+
+    var jsonData = JSON.parse(data.body);
+    var getSummonerId = jsonData[searchIgn].id;
+
+    var buildUriFindSummonerStats = 'https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/'
+                                  + getSummonerId + '/entry' + '?api_key=' + apiKey;
+
+    request.get(buildUriFindSummonerStats, function(err, stats) {
+
+      var jsonSummonerStats = JSON.parse(stats.body);
+      // console.log("stats of summoner" + searchIgn + " :" + util.inspect(jsonSummonerStats, false, null));
+
+      var tier = jsonSummonerStats[getSummonerId][0].tier;
+      var division = jsonSummonerStats[getSummonerId][0].entries[0].division;
+      var wins = jsonSummonerStats[getSummonerId][0].entries[0].wins;
+      var losses = jsonSummonerStats[getSummonerId][0].entries[0].losses;
+
+      User
+        .create(req.body)
+        .then(function(user) {
+          //creates more of user's properties
+          //ater being added to the database
+          user.summonerId = getSummonerId;
+          user.profile_defaultId = jsonData[searchIgn].profileIconId;
+          user.tier = tier;
+          user.division = division;
+          user.wins = wins;
+          user.losses = losses;
+          user.save();
+          res.json({
+            success: true,
+            message: 'Successfully created user.'
+          });
+        }).catch(function(err) {
+          if (err.message.match(/E11000/)) {
+            err.status = 409;
+          } else {
+            err.status = 422;
+          }
+          next(err);
         });
-      }).catch(function(err) {
-        if (err.message.match(/E11000/)) {
-          err.status = 409;
-        } else {
-          err.status = 422;
-        }
-        next(err);
-      });
+    })
   });
 };
 
