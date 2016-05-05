@@ -17,7 +17,9 @@
     })
     .state("home", {
       url: "/home",
-      templateUrl: "/js/app/home/home.html"
+      templateUrl: "/js/app/home/home.html",
+      controller: "HomeController",
+      controllerAs: "vm"
     })
     .state("signin", {
       url: "/signin",

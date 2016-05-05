@@ -26,6 +26,11 @@ function create(req, res, next) {
             ign:  user.ign,
             primary_role: user.primary_role,
             summonerId: user.summonerId,
+            profile_defaultId: user.profile_defaultId,
+            wins: user.wins,
+            losses: user.losses,
+            tier: user.tier,
+            division: user.divsion,
             _id: user._id,
             use:   'public_api'
         });

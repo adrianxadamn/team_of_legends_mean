@@ -13,10 +13,10 @@
     var service = {
       logIn: logIn,
       isLoggedIn: isLoggedIn,
-      logOut: logOut
-      // currentUser: currentUser,
+      logOut: logOut,
+      currentUser: currentUser
       // refreshToken: refreshToken
-    }
+    };
 
     return service;
 
@@ -30,7 +30,6 @@
       .then(
         function(res) {
           $log.info("success:", res);
-          // $state.go("home");
           tokenService.store(res.data.token);
           return tokenService.decode();
         },
@@ -39,19 +38,31 @@
         }
       );
       return promise;
-    };
+    }
 
     function isLoggedIn() {
       return (tokenService.retrieve() != null);
     }
 
-
-
     function logOut() {
       tokenService.destroy();
     }
 
-  }
+    function currentUser() {
+      var tokenData = tokenService.decode();
+       if (tokenData) {
+        // No real reason to do this, just showing you
+        // how it can be done. We can clean out (remove)
+        // properties from the token that are about the token
+        // itself, not the user; this cleans up the data.
+        tokenData.expiresAt = Date(tokenData.exp);
+        delete tokenData.exp;
+        delete tokenData.iat;
+      };
+       return tokenData;
+    }
+
+  };
 
 
 
