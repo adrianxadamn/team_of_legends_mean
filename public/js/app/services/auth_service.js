@@ -11,9 +11,9 @@
     $log.info("auth service is in da house")
 
     var service = {
-      logIn: logIn
-      // isLoggedIn: isLoggedIn,
-      // logout: logout,
+      logIn: logIn,
+      isLoggedIn: isLoggedIn,
+      logOut: logOut
       // currentUser: currentUser,
       // refreshToken: refreshToken
     }
@@ -30,10 +30,7 @@
       .then(
         function(res) {
           $log.info("success:", res);
-          // $log.info("your token is: ", res.data.token);
           tokenService.store(res.data.token);
-          // $log.info("Success:", tokenService.decode());
-          // tokenService.destroy();
           return tokenService.decode();
         },
         function(err) {
@@ -41,10 +38,17 @@
         }
       );
       return promise;
-
-
     };
 
+    function isLoggedIn() {
+      return (tokenService.retrieve() != null);
+    }
+
+
+
+    function logOut() {
+      tokenService.destroy();
+    }
 
   }
 

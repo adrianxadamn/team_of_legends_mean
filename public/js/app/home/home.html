@@ -1,17 +1,17 @@
 <nav>
-  <div class="navbar-container">
+  <div ng-controller="NavBarController as vm" class="navbar-container">
     <div class="navbar-image">
       <img src="../../../images/riot-fist.png" width="40px" height="40px">
     </div>
       <div class="navbar-buttons-container">
         <div class="navbar-col1">
-          <p>Home</p>
-          <p>Users</p>
-          <p>Teams</p>
+          <div>Home</div>
+          <div>Users</div>
+          <div>Teams</div>
         </div>
         <div class="navbar-col3">
-          <p>User</p>
-          <p>SignOut</p>
+          <div>User</div>
+          <div ng-click="vm.authService.logOut()"><a ui-sref="landing_page">Log Out</a></div>
         </div>
       </div>
   </div>
