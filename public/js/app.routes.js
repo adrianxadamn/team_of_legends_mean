@@ -17,8 +17,7 @@
     })
     .state("home", {
       url: "/home",
-      templateUrl: "/js/app/home/home.html",
-      authorized: true
+      templateUrl: "/js/app/home/home.html"
     })
     .state("signin", {
       url: "/signin",

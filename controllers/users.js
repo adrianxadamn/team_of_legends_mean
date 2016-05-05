@@ -14,22 +14,39 @@ function create(req, res, next) {
   var buildUriFindSummoner = baseUriFindSummoner + searchIgn + '?api_key=' + apiKey;
 
   request.get(buildUriFindSummoner, function(err, data) {
-
     var jsonData = JSON.parse(data.body);
-    var getSummonerId = jsonData[searchIgn].id;
+
+    //prevents creating user if IGN
+    //doesn't exist on RIOT Database
+    if (jsonData[searchIgn] === undefined) {
+      return res.status(404).send("Account does not exist");
+    } else {
+      var getSummonerId = jsonData[searchIgn].id;
+    }
+
+    //prevents creating user if IGN
+    //doesn't exist on RIOT Database
+    if (getSummonerId === undefined) {
+      return res.status(422).send("Account does not exist");
+    }
 
     var buildUriFindSummonerStats = 'https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/'
                                   + getSummonerId + '/entry' + '?api_key=' + apiKey;
 
     request.get(buildUriFindSummonerStats, function(err, stats) {
-
       var jsonSummonerStats = JSON.parse(stats.body);
+      console.log("jsonSummonerStats:", jsonSummonerStats);
       // console.log("stats of summoner" + searchIgn + " :" + util.inspect(jsonSummonerStats, false, null));
 
-      var tier = jsonSummonerStats[getSummonerId][0].tier;
-      var division = jsonSummonerStats[getSummonerId][0].entries[0].division;
-      var wins = jsonSummonerStats[getSummonerId][0].entries[0].wins;
-      var losses = jsonSummonerStats[getSummonerId][0].entries[0].losses;
+      if (jsonSummonerStats[getSummonerId] === undefined) {
+        console.log(err);
+      } else {
+        var tier = jsonSummonerStats[getSummonerId][0].tier;
+        var division = jsonSummonerStats[getSummonerId][0].entries[0].division;
+        var wins = jsonSummonerStats[getSummonerId][0].entries[0].wins;
+        var losses = jsonSummonerStats[getSummonerId][0].entries[0].losses;
+      }
+
 
       User
         .create(req.body)
@@ -38,10 +55,16 @@ function create(req, res, next) {
           //ater being added to the database
           user.summonerId = getSummonerId;
           user.profile_defaultId = jsonData[searchIgn].profileIconId;
-          user.tier = tier;
-          user.division = division;
-          user.wins = wins;
-          user.losses = losses;
+
+          if (jsonSummonerStats[getSummonerId] === undefined) {
+            console.log("no ranked stats");
+          } else {
+            user.tier = tier;
+            user.division = division;
+            user.wins = wins;
+            user.losses = losses;
+          }
+
           user.save();
           res.json({
             success: true,

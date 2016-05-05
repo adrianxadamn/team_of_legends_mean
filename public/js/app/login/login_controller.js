@@ -23,6 +23,7 @@
         .create(vm.createUser).then(
           function() {
             $state.go("home");
+            $log.info("cool");
           },
           function(err) {
             if (err.status === 409) {
@@ -49,7 +50,8 @@
         .logIn(vm.currentLogInInfo)
         .then(
             function(decodedToken) {
-              $state.go("home");
+              // $state.go("home");
+              $log.info("good shit");
             },
             function(err) {
               $log.info("err:", err);

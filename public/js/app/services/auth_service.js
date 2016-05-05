@@ -5,9 +5,9 @@
     .module("app")
     .factory("authService", authService);
 
-  authService.$inject = ["$log", "tokenService", "$http"];
+  authService.$inject = ["$log", "tokenService", "$http", "$state"];
 
-  function authService($log, tokenService, $http) {
+  function authService($log, tokenService, $http, $state) {
     $log.info("auth service is in da house")
 
     var service = {
@@ -30,6 +30,7 @@
       .then(
         function(res) {
           $log.info("success:", res);
+          // $state.go("home");
           tokenService.store(res.data.token);
           return tokenService.decode();
         },
