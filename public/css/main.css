@@ -69,11 +69,12 @@ p {
   width: 100%;
 }
 
-.navbar-buttons-container * p {
+.navbar-buttons-container * div, .navbar-buttons-container * a {
   display: inline-block;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
-  margin: auto 10px;
+  margin: auto 20px;
+  color: darkgoldenrod;
 }
 
 .navbar-col1 {
