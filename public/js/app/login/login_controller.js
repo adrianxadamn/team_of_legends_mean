@@ -11,7 +11,6 @@
     $log.info("LoginController is in da house!")
     var vm = this;
 
-
     //Step 1. Create a User
     ////creates a new User into the database
     vm.signUp = function() {
@@ -23,7 +22,6 @@
         .create(vm.createUser).then(
           function() {
             $state.go("home");
-            $log.info("cool");
           },
           function(err) {
             if (err.status === 409) {
@@ -33,7 +31,7 @@
             }
           }
         );
-    };
+    }
 
 
     //Logs in an already created user from the database
@@ -50,17 +48,16 @@
         .logIn(vm.currentLogInInfo)
         .then(
             function(decodedToken) {
-              // $state.go("home");
-              $log.info("good shit");
+              $state.go("home");
             },
             function(err) {
               $log.info("err:", err);
             }
         );
 
-      }
-    };
+      };
+    }
 
-  };
+  }
 
 })();
