@@ -24,10 +24,12 @@
   <div class="main-column-one">
     <div class="main-user-container">
       <div class="user-image">
+        <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.authService.currentUser().profile_defaultId}}.png" width="70px" height="70px">
       </div>
       <div class="user-info">
-      hi
-        {{vm.authService.currentUser().wins}}
+        <p>IGN: {{vm.authService.currentUser().ign}}<p>
+        <p>Role: {{vm.authService.currentUser().primary_role}}<p>
+        <p>Rank: {{vm.authService.currentUser().tier}} {{vm.authService.currentUser().division}}<p>
       </div>
     </div>
 
