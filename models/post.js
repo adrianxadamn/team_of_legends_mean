@@ -10,7 +10,7 @@ var commentSchema = new mongoose.Schema({
   upvotes:     { type: Number, default: 0 },
   createdAt:   { type: Date, default: Date.now }
 
-})
+});
 
 var postSchema = new mongoose.Schema({
   author:      {
