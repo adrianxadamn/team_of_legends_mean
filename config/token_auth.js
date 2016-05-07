@@ -30,7 +30,7 @@ function create(req, res, next) {
             wins: user.wins,
             losses: user.losses,
             tier: user.tier,
-            division: user.divsion,
+            division: user.division,
             _id: user._id,
             use:   'public_api'
         });
