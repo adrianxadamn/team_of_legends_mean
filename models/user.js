@@ -15,7 +15,7 @@ var userSchema = new mongoose.Schema({
   description:        { type: String },
   team:               {
                         type: mongoose.Schema.Types.ObjectId,
-                        ref: "User"
+                        ref: "Team"
                       },
   profile_defaultId:  { type: String },
   tier:               { type: String },
@@ -23,7 +23,9 @@ var userSchema = new mongoose.Schema({
   champion_pool:      [championSchema],
   wins:               { type: Number },
   losses:             { type: Number },
-  summonerId:         { type: String }
+  summonerId:         { type: String },
+  createdAt:          { type: Date, default: Date.now }
+
 });
 
 userSchema.plugin(require('mongoose-bcrypt'));
