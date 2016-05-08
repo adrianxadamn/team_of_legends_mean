@@ -119,8 +119,8 @@ p {
   order: 1;
   border-radius: 5px;
   margin-right: 10px;
-  background-color: white;
-  border: 3px solid darkgoldenrod;
+  /*background-color: white;*/
+/*  border: 2px solid darkgoldenrod;*/
 }
 
 .main-column-two {
@@ -129,7 +129,6 @@ p {
   margin-right: 10px;
   flex: 2;
   margin-bottom: 20px;
-  background-color: red;
 }
 
 .main-column-three {
@@ -146,7 +145,11 @@ p {
 
 .main-user-container {
   padding: 10px;
-  height: 90px;
+  height: 95px;
+  background-color: white;
+  border: 2px solid darkgoldenrod;
+  border-radius: 5px;
+  margin-bottom: 20px;
 /*Transition test*/
 /*  transition: .2s ease-in-out;*/
 }
@@ -168,4 +171,36 @@ p {
 
 .user-info > p {
   margin: 0;
+}
+
+.links {
+  height: 95px;
+  background-color: white;
+  border: 2px solid darkgoldenrod;
+  border-radius: 5px;
+}
+
+/***Column 2 CSS****/
+/*******************/
+
+.post-form {
+  background-color: white;
+  border-left: 2px solid darkgoldenrod;
+  border-right: 2px solid darkgoldenrod;
+  border-top: 2px solid darkgoldenrod;
+  padding: 10px;
+}
+
+#body-content {
+  width: 100%;
+  height: 100px;
+}
+
+.post {
+  background-color: white;
+  border-left: 2px solid darkgoldenrod;
+  border-right: 2px solid darkgoldenrod;
+  border-top: 1px solid darkgoldenrod;
+  border-bottom: 1px solid darkgoldenrod;
+  padding: 10px;
 }

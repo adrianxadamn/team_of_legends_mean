@@ -17,8 +17,8 @@
     })
     .state("home", {
       url: "/home",
-      templateUrl: "/js/app/home/home.html",
-      controller: "HomeController",
+      templateUrl: "/js/app/layouts/home.html",
+      controller: "MainController",
       controllerAs: "vm"
     })
     .state("signin", {
@@ -26,6 +26,12 @@
       templateUrl: "/js/app/login/signin.html",
       controller: "LoginController",
       controllerAs: "vm",
+    })
+    .state('user-list', {
+      url: "/users",
+      templateUrl: "/js/app/layouts/users.html",
+      controller: "MainController",
+      controllerAs: "vm"
     });
 
   $urlRouterProvider.otherwise("/");

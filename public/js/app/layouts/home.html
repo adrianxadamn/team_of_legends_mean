@@ -5,8 +5,8 @@
     </div>
       <div class="navbar-buttons-container">
         <div class="navbar-col1">
-          <div>Home</div>
-          <div>Users</div>
+          <div><a ui-sref="home">Home</a></div>
+          <div><a ui-sref="user-list">Users</a></div>
           <div>Teams</div>
         </div>
         <div class="navbar-col3">
@@ -33,26 +33,31 @@
       </div>
     </div>
 
+    <div class="links">
+    </div>
+
   </div>
 
   <div ng-controller="PostController as vm" class="main-column-two">
-    <form ng-submit="vm.submitPost(vm.authService.currentUser()._id)">
+    <form class="post-form" ng-submit="vm.submitPost(vm.authService.currentUser()._id)">
       <div class="form-group">
         <label>Title:</label>
         <input ng-model="vm.createPost.title" type="text">
       </div>
       <div class="form-group">
         <label>Body:</label>
-        <input ng-model="vm.createPost.body" type="text">
+        <input id="body-content" ng-model="vm.createPost.body" type="text">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
 <!-- Fix HTML & CSS LATER -->
-    <div ng-repeat="post in vm.all">
-      <p>Title: {{post.title}}</p>
-      <p>Body: {{post.body}}</p>
-      <p>Author: {{post.author.ign}}</p>
-      <p>Created At: {{post.createdAt}}</p>
+    <div class="post-list">
+      <div class="post" ng-repeat="post in vm.all">
+        <p>Title: {{post.title}}</p>
+        <p>Body: {{post.body}}</p>
+        <p>Author: {{post.author.ign}}</p>
+        <p>Created At: {{post.createdAt}}</p>
+      </div>
     </div>
   </div>
 
