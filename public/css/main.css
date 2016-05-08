@@ -5,6 +5,7 @@ body {
   background-size: 120%;
   background-repeat: repeat-y repeat-x;
   background-position: center top;
+  line-height: 1;
 }
 
 #landing-image {
@@ -145,22 +146,12 @@ p {
 
 .main-user-container {
   padding: 10px;
-  height: 90px;
-/*  background-color: white;
-  border: 2px solid darkgoldenrod;
-  border-radius: 5px;*/
-  /*Transition test*/
-/*  transition: .2s ease-in-out;*/
-}
-
-.user-image, .user-info {
-  display: inline-block;
 }
 
 #user-profile-default {
   border: 1px solid darkgoldenrod;
   /*temporary until fixed later*/
-  margin-bottom: 40px;
+  float: left;
 }
 
 /*Transition test*/
@@ -169,7 +160,8 @@ p {
 }*/
 
 .user-info > p {
-  margin: 0;
+  margin: -2px;
+  margin-left: 75px;
 }
 
 .links {
