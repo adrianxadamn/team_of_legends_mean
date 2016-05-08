@@ -5,25 +5,25 @@ var Post    = require("../models/post");
 
 
 function getPosts(req, res, next) {
-  Post.find({}, function(err, users) {
-    if(err) {
-      res.send(err);
-    }
-    res.json(users);
-  });
+  Post.find({}).populate("author").exec()
+    .then(function(posts) {
+      res.json(posts);
+    });
+
 }
 
 function createPost(req, res, next){
   User.findById(req.decoded._id).exec()
     .then(function(user) {
-      console.log("user:", user);
+
+      var user = user;
 
       Post
-        .create({
-          title: req.body.title,
-          body: req.body.body
-        });
-
+        .create(req.body)
+        .then(function(post) {
+          post.author = user;
+          post.save();
+        })
 
     });
 }

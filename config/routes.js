@@ -16,7 +16,7 @@ router.post('/token',    token.create);
 
 // posts resource path:
 router.get('/posts/', postsController.getPosts);
-router.post('/posts/', postsController.createPost);
+router.post('/posts/', token.authenticate, postsController.createPost);
 
 
 module.exports = router;
