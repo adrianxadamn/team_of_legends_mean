@@ -27,6 +27,7 @@
       .then(
         function(res) {
           $log.info("success");
+          return res;
         }
       );
       return promise;

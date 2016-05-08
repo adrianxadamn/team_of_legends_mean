@@ -23,9 +23,14 @@ function createPost(req, res, next){
         .then(function(post) {
           post.author = user;
           post.save();
-        })
+          console.log("The Post: saved", post);
 
-    });
+          res.json(post);
+
+          });
+        });
+
+
 }
 
 module.exports = {

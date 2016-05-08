@@ -19,10 +19,15 @@
       $log.info("data:", data);
 
       postService
-        .create(vm.createPost)
-        .then(function(res) {
-          $state.go("home")
-        });
+        .create(vm.createPost).then(
+          function(response) {
+            $log.info("response:", response);
+            vm.all.push(response.data);
+          },
+          function(err) {
+            $log.info(err);
+          }
+        );
 
     };
 
