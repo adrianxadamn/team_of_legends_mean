@@ -35,7 +35,7 @@ body {
 }
 
 p {
-  color: darkgoldenrod;
+  color: #333132;
 }
 
 .container > h1, .container * label, .container * button  {
@@ -63,7 +63,7 @@ p {
 
 .navbar-container {
   height: 46px;
-  border-bottom: 1px solid rgb(184, 134, 11);
+  border-bottom: 1px solid #496E91;
   background: black;
   position: absolute;
   width: 100%;
@@ -75,7 +75,7 @@ p {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   margin: auto 20px;
-  color: darkgoldenrod;
+  color: #cfba6b;
 }
 
 .navbar-col1 {
@@ -145,12 +145,11 @@ p {
 
 .main-user-container {
   padding: 10px;
-  height: 95px;
-  background-color: white;
+  height: 90px;
+/*  background-color: white;
   border: 2px solid darkgoldenrod;
-  border-radius: 5px;
-  margin-bottom: 20px;
-/*Transition test*/
+  border-radius: 5px;*/
+  /*Transition test*/
 /*  transition: .2s ease-in-out;*/
 }
 
@@ -183,24 +182,13 @@ p {
 /***Column 2 CSS****/
 /*******************/
 
-.post-form {
-  background-color: white;
-  border-left: 2px solid darkgoldenrod;
-  border-right: 2px solid darkgoldenrod;
-  border-top: 2px solid darkgoldenrod;
-  padding: 10px;
-}
-
 #body-content {
   width: 100%;
   height: 100px;
 }
 
-.post {
-  background-color: white;
-  border-left: 2px solid darkgoldenrod;
-  border-right: 2px solid darkgoldenrod;
-  border-top: 1px solid darkgoldenrod;
-  border-bottom: 1px solid darkgoldenrod;
-  padding: 10px;
+.panel-body {
+  border: 2px solid #496E91;
+  border-radius: 5px;
+  background-color: #e9eaec;
 }
