@@ -98,8 +98,16 @@ function me(req, res, next) {
     });
 };
 
+function getUsers(req, res, next) {
+  User.find({}).exec()
+    .then(function(users) {
+      res.json(users);
+    })
+};
+
 
 module.exports = {
   create: create,
-  me:  me
+  me:  me,
+  getUsers: getUsers
 };

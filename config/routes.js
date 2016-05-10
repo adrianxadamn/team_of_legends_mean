@@ -11,6 +11,7 @@ var token = require('./token_auth');
 // users resource paths:
 router.post('/users',   usersController.create);
 router.get('/users/me', token.authenticate, usersController.me);
+router.get('/users/',   usersController.getUsers);
 
 router.post('/token',    token.create);
 
