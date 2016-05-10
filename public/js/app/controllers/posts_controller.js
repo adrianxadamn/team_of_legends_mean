@@ -5,14 +5,13 @@
     .module('app')
     .controller('PostController', PostController);
 
-  PostController.$inject = ["$log", "authService", "postService", "$http", "$state"];
+  PostController.$inject = ["$log", "postService", "$http", "$state"];
 
-  function PostController($log, authService, postService, $http, $state) {
+  function PostController($log, postService, $http, $state) {
     $log.info("PostController is in da house");
 
     var vm = this;
     vm.all = [];
-    vm.authService = authService;
 
 
     ////////////////////////

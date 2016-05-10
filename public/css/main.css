@@ -8,6 +8,13 @@ body {
   line-height: 1;
 }
 
+#active {
+  background-color: rgba(26, 44, 44, 1.0);
+/*  border-right: 1px solid #496E91;
+  border-left: 1px solid #496E91;*/
+  border-bottom: 1px solid rgba(26, 44, 44, 1.0);
+}
+
 #landing-image {
   width: 80%;
   /*margin-top: 100px;*/
@@ -64,11 +71,18 @@ p {
 
 .navbar-container {
   height: 46px;
-  border-bottom: 1px solid #496E91;
+  border-bottom: 3px solid rgba(26, 44, 44, 1.0);
   background: black;
-  position: absolute;
+  position: fixed;
   width: 100%;
   /*margin-top: -20px;*/
+}
+
+.navbar-buttons-container * a {
+  height: 46px;
+  padding-top: 8px;
+  width: 100px;
+  text-align: center;
 }
 
 .navbar-buttons-container * div, .navbar-buttons-container * a {
@@ -82,7 +96,7 @@ p {
 .navbar-col1 {
   float: left;
   position: absolute;
-  top: 10px;
+  top: 0px;
   left: 8%;
 }
 
@@ -90,7 +104,7 @@ p {
   float: right;
   position: absolute;
   right: 8%;
-  top: 10px;
+  top: 0px;
 }
 
 .navbar-image {
@@ -183,4 +197,37 @@ p {
   border: 2px solid #496E91;
   border-radius: 5px;
   background-color: #e9eaec;
+}
+
+#main-user-container {
+  padding: 0px;
+}
+
+#user-info > p {
+  text-align: left;
+  font-size: 20px;
+  margin-left: 5px;
+  margin-right: 20px;
+}
+
+#user-info {
+  display: inline-block;
+}
+
+#more-user-info {
+  display: inline-block;
+}
+
+#more-user-info > p {
+  margin: -2px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.actions > p {
+  display: inline;
+}
+
+.actions {
+  text-align: left;
 }
