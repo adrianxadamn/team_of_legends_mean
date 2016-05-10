@@ -21,8 +21,8 @@ var userSchema = new mongoose.Schema({
   tier:               { type: String },
   division:           { type: String },
   champion_pool:      [championSchema],
-  wins:               { type: Number },
-  losses:             { type: Number },
+  wins:               { type: Number, default: 0 },
+  losses:             { type: Number, default: 0 },
   summonerId:         { type: String },
   createdAt:          { type: Date, default: Date.now }
 
