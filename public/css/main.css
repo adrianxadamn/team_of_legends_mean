@@ -231,3 +231,13 @@ p {
 .actions {
   text-align: left;
 }
+
+
+/**Edit Profile CSS**/
+/*******************/
+
+
+#edit-user-info > p {
+  margin-left: 0px;
+  margin: 0px;
+}

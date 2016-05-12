@@ -25,20 +25,25 @@
       url: "/signin",
       templateUrl: "/js/app/login/signin.html",
       controller: "LoginController",
-      controllerAs: "vm",
+      controllerAs: "vm"
     })
     .state('user-list', {
       url: "/users",
       templateUrl: "/js/app/layouts/users.html",
       controller: "MainController",
-      controllerAs: "vm",
+      controllerAs: "vm"
     })
     .state('user-profile', {
       url: '/profile?username',
       templateUrl: '/js/app/layouts/profile.html',
-      controller: function($stateParams) {
-        console.log($stateParams);
-      }
+      controller: "MainController",
+      controllerAs: "vm"
+    })
+    .state('edit-profile', {
+      url: '/edit_profile?username',
+      templateUrl: '/js/app/layouts/edit_profile.html',
+      controller: "MainController",
+      controllerAs: "vm"
     });
 
   $urlRouterProvider.otherwise("/");

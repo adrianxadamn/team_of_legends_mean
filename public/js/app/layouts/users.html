@@ -10,7 +10,7 @@
           <div>Teams</div>
         </div>
         <div class="navbar-col3">
-          <div>User</div>
+          <div><a ui-sref="edit-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a></div>
           <div ng-click="vm.authService.logOut()"><a ui-sref="landing_page">Log Out</a></div>
         </div>
       </div>
@@ -72,12 +72,11 @@
               <p>Email: {{user.email}}</p>
               <p>Description: {{user.description}}</p>
               <p>Champion Pool : {{user.champion_pool}}</p>
-              <p></p>
             </div>
             <div class="actions">
               <p ng-show="vm.toggleInfoValue[$index]" ng-click="vm.toggleInfo($index)"><u><a href="">More Info</a></u></p>
               <p ng-hide="vm.toggleInfoValue[$index]" ng-click="vm.toggleInfo($index)"><u><a href="">Close</a></u></p>
-              <p><u>View Profile</u></p>
+              <p><u><a ui-sref="user-profile({username: user.ign})">View Profile</a></u></p>
               <p><u>Add to Team</u></p>
             </div>
           </div>
