@@ -10,7 +10,7 @@ var userSchema = new mongoose.Schema({
   email:              { type: String, required: true, unique: true},
   ign:                { type: String, required: true, unique: true},
   primary_role:       { type: String },
-  transportation:     { type: Boolean },
+  transportation:     { type: String },
   location:           { type: String },
   description:        { type: String },
   team:               {

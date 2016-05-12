@@ -92,12 +92,16 @@ function debugReq(req, res, next) {
   next();
 }
 
+
 function validateContentType(req, res, next) {
   var methods = ['PUT', 'PATCH', 'POST'];
-  var type    = 'application/json';
-
-  if (methods.indexOf(req.method) !== -1 && req.get('Content-Type') !== type) {
-    res.status(400).send('Content-Type header must be application/json.');
+  if (                                    // If the request is
+    methods.indexOf(req.method) !== -1 && // one of PUT, PATCH or POST, and
+    Object.keys(req.body).length !== 0 && // has a body that is not empty, and
+    !req.is('json')                       // does not have an application/json
+  ) {                                     // Content-Type header, then …
+    var message = 'Content-Type header must be application/json.';
+    res.status(400).json(message);
   } else {
     next();
   }

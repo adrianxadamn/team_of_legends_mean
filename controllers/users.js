@@ -98,6 +98,34 @@ function me(req, res, next) {
     });
 };
 
+function update(req, res, next) {
+  console.log("req.body:", req.body);
+  User
+    .findById(req.decoded._id).exec()
+    .then(function(user) {
+
+      console.log("user:", user);
+
+      if (req.body.email)    user.email    = req.body.email;
+      if (req.body.transportation)     user.transportation     = req.body.transportation;
+      if (req.body.location) user.location = req.body.location;
+      if (req.body.description) user.description = req.body.description;
+      if (req.body.primary_role) user.primary_role = req.body.primary_role;
+
+      return user.save();
+
+    })
+    .then(function(user) {
+      res.json({
+        success: true,
+        message: 'Successfully updated user data.'
+      });
+    })
+    .catch(function(err) {
+      next(err);
+    })
+};
+
 function getUsers(req, res, next) {
   User.find({}).exec()
     .then(function(users) {
@@ -109,5 +137,6 @@ function getUsers(req, res, next) {
 module.exports = {
   create: create,
   me:  me,
+  update: update,
   getUsers: getUsers
 };

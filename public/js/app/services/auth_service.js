@@ -5,17 +5,17 @@
     .module("app")
     .factory("authService", authService);
 
-  authService.$inject = ["$log", "tokenService", "$http", "$state"];
+  authService.$inject = ["$log", "tokenService", "$http"];
 
-  function authService($log, tokenService, $http, $state) {
+  function authService($log, tokenService, $http) {
     $log.info("auth service is in da house")
 
     var service = {
       logIn: logIn,
       isLoggedIn: isLoggedIn,
       logOut: logOut,
-      currentUser: currentUser
-      // refreshToken: refreshToken
+      currentUser: currentUser,
+      refreshToken: refreshToken
     };
 
     return service;
@@ -60,6 +60,19 @@
         delete tokenData.iat;
       };
        return tokenData;
+    }
+
+    function refreshToken() {
+
+      var promise = $http({
+        method: 'POST',
+        url:    '/api/users/me/token'
+      })
+      .then(function(res) {
+        tokenService.store(res.data.token);
+        return tokenService.decode();
+      });
+      return promise;
     }
 
   };

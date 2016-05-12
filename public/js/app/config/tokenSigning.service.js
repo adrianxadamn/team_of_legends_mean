@@ -14,7 +14,7 @@
 
     function signWithToken(request) {
       if (tokenService.retrieve()) {
-        // $log.info("Token exists; signing request.");
+        $log.debug("Token exists; signing request.");
         request.headers['Authorization'] = `Bearer ${tokenService.retrieve()}`;
       }
 

@@ -11,8 +11,8 @@
     $log.info("user service is in da house");
 
     var service = {
-      create: create
-      // update: update,
+      create: create,
+      update: update
       // destroy: destroy
     };
 
@@ -34,6 +34,19 @@
 
       return promise;
     };
+
+    function update(data) {
+      $log.info("data:", data);
+
+      var promise = $http({
+        method: 'PUT',
+        url:    '/api/users/me',
+        data:   data
+      });
+
+      return promise;
+
+    }
 
 
 

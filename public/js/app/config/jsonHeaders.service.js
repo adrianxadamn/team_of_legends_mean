@@ -13,7 +13,7 @@
     };
 
     function addJsonHeaders(request) {
-      // $log.info("Setting JSON headers.");
+      $log.debug("Setting JSON headers.");
       request.headers['Content-Type'] = 'application/json';
       return request;
     }
