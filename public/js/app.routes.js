@@ -31,7 +31,14 @@
       url: "/users",
       templateUrl: "/js/app/layouts/users.html",
       controller: "MainController",
-      controllerAs: "vm"
+      controllerAs: "vm",
+    })
+    .state('user-profile', {
+      url: '/profile?username',
+      templateUrl: '/js/app/layouts/profile.html',
+      controller: function($stateParams) {
+        console.log($stateParams);
+      }
     });
 
   $urlRouterProvider.otherwise("/");

@@ -10,7 +10,7 @@
           <div>Teams</div>
         </div>
         <div class="navbar-col3">
-          <div>User</div>
+          <div><a ui-sref="user-profile({username: vm.authService.currentUser().ign})">User</a></div>
           <div ng-click="vm.authService.logOut()"><a ui-sref="landing_page">Log Out</a></div>
         </div>
       </div>
