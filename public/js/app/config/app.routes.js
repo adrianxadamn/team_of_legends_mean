@@ -35,7 +35,7 @@
     })
     .state('user-profile', {
       url: '/profile?username',
-      templateUrl: '/js/app/layouts/profile.html',
+      templateUrl: '/js/app/layouts/user_profile.html',
       controller: "MainController",
       controllerAs: "vm"
     })

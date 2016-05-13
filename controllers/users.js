@@ -106,11 +106,11 @@ function update(req, res, next) {
 
       console.log("user:", user);
 
-      if (req.body.email)    user.email    = req.body.email;
-      if (req.body.transportation)     user.transportation     = req.body.transportation;
-      if (req.body.location) user.location = req.body.location;
-      if (req.body.description) user.description = req.body.description;
-      if (req.body.primary_role) user.primary_role = req.body.primary_role;
+      if (req.body.email)            user.email           = req.body.email;
+      if (req.body.transportation)   user.transportation  = req.body.transportation;
+      if (req.body.location)         user.location        = req.body.location;
+      if (req.body.description)      user.description     = req.body.description;
+      if (req.body.primary_role)     user.primary_role    = req.body.primary_role;
 
       return user.save();
 
@@ -133,10 +133,22 @@ function getUsers(req, res, next) {
     })
 };
 
+function getSpecificUser(req, res, next) {
+  var ign = req.params.ign;
+
+  User.findOne({'ign': ign}, function(err, user) {
+    if (err) {
+      res.send(err);
+    }
+    res.json(user);
+  });
+};
+
 
 module.exports = {
   create: create,
   me:  me,
   update: update,
-  getUsers: getUsers
+  getUsers: getUsers,
+  getSpecificUser: getSpecificUser
 };

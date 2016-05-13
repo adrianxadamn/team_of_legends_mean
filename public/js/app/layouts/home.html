@@ -64,7 +64,7 @@
     </div>
 <!-- Fix HTML & CSS LATER -->
     <div class="post-list">
-      <div ng-repeat="post in vm.all" class="panel panel-default" style="margin-bottom:0px">
+      <div ng-repeat="post in vm.all.slice().reverse()" class="panel panel-default" style="margin-bottom:0px">
         <div ng-click="vm.toggleContent($index)" class="panel-body">
           <p>Title: {{post.title}}</p>
           <p>Body: {{post.body}}</p>

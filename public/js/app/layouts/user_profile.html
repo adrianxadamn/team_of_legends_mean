@@ -1,0 +1,109 @@
+<nav>
+  <div ng-controller="NavBarController as vm" class="navbar-container">
+    <div class="navbar-image">
+      <img src="../../../images/riot-fist.png" width="40px" height="40px">
+    </div>
+      <div class="navbar-buttons-container">
+        <div class="navbar-col1">
+          <div><a ui-sref="home">Home</a></div>
+          <div><a id="active" ui-sref="user-list">Users</a></div>
+          <div>Teams</div>
+        </div>
+        <div class="navbar-col3">
+          <div><a ui-sref="user-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a></div>
+          <div ng-click="vm.authService.logOut()"><a ui-sref="landing_page">Log Out</a></div>
+        </div>
+      </div>
+  </div>
+</nav>
+
+<div class="dummy-container">
+</div>
+
+<div class="main-container">
+  <div class="main-column-one">
+    <div class="panel panel-default">
+      <div class="panel-body" style="padding:0px">
+        <div class="main-user-container">
+          <div class="user-image">
+            <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.authService.currentUser().profile_defaultId}}.png" width="70px" height="70px">
+          </div>
+          <div class="user-info">
+            <p>IGN: {{vm.authService.currentUser().ign}}<p>
+            <p>Role: {{vm.authService.currentUser().primary_role}}<p>
+            <p>Rank: {{vm.authService.currentUser().tier}} {{vm.authService.currentUser().division}}<p>
+            <p>Team: {{vm.authService.currentUser().team}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p>yo</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div ng-controller="UserController as vm" class="main-column-two">
+
+<!-- Fix HTML & CSS LATER -->
+    <div class="post-list">
+      <div class="panel panel-default" style="margin-bottom:0px">
+        <div class="panel-body" style="padding: 10px 10px 10px 10px">
+          <div id="main-user-container" class="main-user-container">
+            <div class="user-image">
+              <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.authService.currentUser().profile_defaultId}}.png" width="100px" height="100px">
+            </div>
+            <div id="user-info" class="user-info">
+              <p>IGN: {{vm.storeUserData.ign}}<p>
+              <p>Role: {{vm.authService.currentUser().primary_role}}<p>
+              <p>Rank: {{vm.authService.currentUser().tier}} {{vm.authService.currentUser().division}}<p>
+              <p>Team: {{vm.authService.currentUser().team}}</p>
+            </div>
+            <div id="user-info" class="user-info">
+              <p>Wins: {{vm.authService.currentUser().wins}} / Losses: {{vm.authService.currentUser().losses}}<p>
+              <p>Win%: {{(vm.authService.currentUser().wins / (vm.authService.currentUser().losses + vm.authService.currentUser().wins)) * 100| number:0}}%<p>
+              <p>Transportation: {{vm.authService.currentUser().transportation}} <p>
+              <p>Location: {{vm.authService.currentUser().location}}</p>
+            </div>
+<!--             <div ng-show="vm.toggleValue" id="more-user-info">
+              <p>Email: {{vm.authService.currentUser().email}}</p>
+              <p>Description: {{vm.authService.currentUser().description}}</p>
+              <p>Champion Pool : {{vm.authService.currentUser().champion_pool}}</p>
+              <p></p>
+            </div>
+            <div ng-hide="vm.toggleValue" id="edit-user-info" class="user-info">
+              <form ng-submit="vm.submitUpdate(vm.authService.currentUser())">
+                <p>Main Role:</p><select class="form-control" ng-model="vm.newProfileData.primary_role">
+                              <option value="Top">Top</option>
+                              <option value="Jungle">Jungle</option>
+                              <option value="Mid">Mid</option>
+                              <option value="ADC">ADC</option>
+                              <option value="Support">Support</option>
+                            </select>
+                <p>Transportation:</p><select class="form-control" ng-model="vm.newProfileData.transportation">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                      </select>
+                <p>Location:</p> <input class="form-control" ng-model="vm.newProfileData.location">
+                <p>Email:</p><input class="form-control" ng-model="vm.newProfileData.email">
+                <p>Description:</p> <input class="form-control" ng-model="vm.newProfileData.description">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </form>
+            </div>
+            <div class="actions">
+              <p ng-show="vm.toggleValue" ng-click="vm.toggleEdit()"><a href="">Edit Information</a></p>
+              <p ng-hide="vm.toggleValue" ng-click="vm.toggleEdit()"><a href="">Back</a></p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-column-three">
+
+  </div>
+</div>

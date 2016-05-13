@@ -13,6 +13,7 @@ router.post('/users',   usersController.create);
 router.get('/users/me', token.authenticate, usersController.me);
 router.put('/users/me', token.authenticate, usersController.update);
 router.get('/users/',   usersController.getUsers);
+router.get('/users/:ign', usersController.getSpecificUser);
 
 router.post('/token',    token.create);
 router.post('/users/me/token', token.authenticate, token.refresh);

@@ -5,9 +5,10 @@
     .module('app')
     .controller('ProfileController', ProfileController);
 
-  ProfileController.$inject = ["$log", "authService", "userService", "$state", "tokenService"];
+  ProfileController.$inject = ["$log", "authService", "userService", "$state",
+                               "tokenService", "$location", "profileService", "$http" ];
 
-  function ProfileController($log, authService, userService, $state, tokenService) {
+  function ProfileController($log, authService, userService, $state, tokenService, $location, profileService, $http) {
     $log.info('ProfileController is in da house');
 
     var vm = this;
@@ -49,6 +50,7 @@
           $log.info('Error:', err);
         });
     };
+
 
   }
 
