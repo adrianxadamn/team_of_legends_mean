@@ -5,9 +5,9 @@
     .module('app')
     .controller('UserController', UserController);
 
-  UserController.$inject = ["$log", "$http", "$state", "profileService", "$location"];
+  UserController.$inject = ["$log", "$http", "$state", "$location"];
 
-  function UserController($log, $http, $state, profileService, $location) {
+  function UserController($log, $http, $state, $location) {
     $log.info("UserController is in da house");
 
     var vm = this;
