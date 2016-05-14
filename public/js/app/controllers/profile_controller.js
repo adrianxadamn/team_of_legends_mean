@@ -24,7 +24,6 @@
     };
 
     vm.toggleEdit = function() {
-      $log.info("hi");
       vm.toggleValue = !vm.toggleValue;
       $log.info("vm.toggleValue:", vm.toggleValue);
     };

@@ -14,6 +14,7 @@
     vm.all = [];
 
     vm.toggleInfoValue = [];
+    vm.toggleValue = true;
 
     var url = $location.url();
     var urlIgn = url.slice(18);
@@ -23,6 +24,11 @@
 
     for (var i = 0; i < 99999; i++) {
       vm.toggleInfoValue[i] = true;
+    };
+
+    vm.toggleEdit = function() {
+      vm.toggleValue = !vm.toggleValue;
+      $log.info("vm.toggleValue:", vm.toggleValue);
     };
 
     vm.toggleInfo = function(num) {
