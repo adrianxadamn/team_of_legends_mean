@@ -29,7 +29,7 @@
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.authService.currentUser().profile_defaultId}}.png" width="70px" height="70px">
           </div>
           <div class="user-info">
-            <p>IGN: {{vm.authService.currentUser().ign}}<p>
+            <p>IGN: <a ui-sref="user-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a><p>
             <p>Role: {{vm.authService.currentUser().primary_role}}<p>
             <p>Rank: {{vm.authService.currentUser().tier}} {{vm.authService.currentUser().division}}<p>
             <p>Team: [ {{vm.authService.currentUser().team.team_abbr}} ]</p>
@@ -68,7 +68,7 @@
         <div ng-click="vm.toggleContent($index)" class="panel-body">
           <p>Title: {{post.title}}</p>
           <p>Body: {{post.body}}</p>
-          <p>Author: {{post.author.ign}}</p>
+          <p>Author: <a ui-sref="user-profile({username: user.ign})">{{post.author.ign}}</a></p>
           <p>Created At: {{post.createdAt | date:'MM/dd/yyyy h:mm:a'}}</p>
 <!--  Will add When a user can comment on a post
          <div>
@@ -107,7 +107,7 @@
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{user.profile_defaultId}}.png" width="70px" height="70px">
           </div>
           <div class="user-info">
-            <p>IGN: {{user.ign}}<p>
+            <p>IGN: <a ui-sref="user-profile({username: user.ign})">{{user.ign}}</a><p>
             <p>Role: {{user.primary_role}}<p>
             <p>Rank: {{user.tier}} {{user.division}}<p>
             <p>Team: [ {{user.team.team_abbr}} ]</p>

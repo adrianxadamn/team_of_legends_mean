@@ -29,7 +29,7 @@
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.authService.currentUser().profile_defaultId}}.png" width="70px" height="70px">
           </div>
           <div class="user-info">
-            <p>IGN: {{vm.authService.currentUser().ign}}<p>
+            <p>IGN: <a ui-sref="user-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a><p>
             <p>Role: {{vm.authService.currentUser().primary_role}}<p>
             <p>Rank: {{vm.authService.currentUser().tier}} {{vm.authService.currentUser().division}}<p>
             <p>Team: [ {{vm.authService.currentUser().team.team_abbr}} ]</p>
@@ -57,7 +57,7 @@
               <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{user.profile_defaultId}}.png" width="100px" height="100px">
             </div>
             <div id="user-info" class="user-info">
-              <p>IGN: {{user.ign}}<p>
+              <p>IGN: <a ui-sref="user-profile({username: user.ign})">{{user.ign}}</a><p>
               <p>Role: {{user.primary_role}}<p>
               <p>Rank: {{user.tier}} {{user.division}}<p>
               <p>Team: [ {{user.team.team_abbr}} ]</p>
@@ -113,7 +113,7 @@
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{user.profile_defaultId}}.png" width="70px" height="70px">
           </div>
           <div class="user-info">
-            <p>IGN: {{user.ign}}<p>
+            <p>IGN: <a ui-sref="user-profile({username: user.ign})">{{user.ign}}</a><p>
             <p>Role: {{user.primary_role}}<p>
             <p>Rank: {{user.tier}} {{user.division}}<p>
             <p>Team: [ {{user.team.team_abbr}} ]</p>
