@@ -5,9 +5,9 @@
     .module('app')
     .controller('TeamController', TeamController);
 
-  TeamController.$inject = ["$log", "$state", "teamService"];
+  TeamController.$inject = ["$log", "$state", "teamService", "$http"];
 
-  function TeamController($log, $state, teamService) {
+  function TeamController($log, $state, teamService, $http) {
     $log.info("TeamController is in da house");
 
     var vm = this;
@@ -26,8 +26,20 @@
             $log.info(err);
           })
 
+    };
+
+    function getAllTeams() {
+      $http
+        .get('/api/teams')
+        .then(function(res) {
+          vm.all = res.data;
+          $log.info(vm.all);
+        }, function(err) {
+          $log.info(err);
+        })
     }
 
+    getAllTeams();
 
   }
 

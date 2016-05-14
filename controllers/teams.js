@@ -24,6 +24,7 @@ function create(req, res, next) {
           var team = team;
 
           team.owner = user;
+          team.members.push(user);
           team.save();
           console.log('team saved:', team);
 

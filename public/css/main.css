@@ -150,7 +150,6 @@ p {
   order: 3;
   border-radius: 5px;
   margin-bottom: 20px;
-  background-color: blue;
   flex: 1;
 }
 
@@ -232,12 +231,21 @@ p {
   text-align: left;
 }
 
+/***Column 3 CSS****/
+/*******************/
+
+.panel * h1 {
+  text-align: center;
+}
+
 
 /**Edit Profile CSS**/
 /*******************/
 
 
-#edit-user-info > p {
+#edit-user-info * p {
   margin-left: 0px;
   margin: 0px;
 }
+
+

@@ -87,6 +87,40 @@
   </div>
 
   <div class="main-column-three">
+    <div ng-controller="TeamController as vm" class="panel panel-default">
+      <div class="panel-body" style="padding:0px">
+      <h1>Recent Teams</h1>
+        <div ng-repeat="team in vm.all.slice().reverse()" class="main-user-container">
+          <div class="user-image">
+            <img id="user-profile-default" src="{{team.team_image}}" width="70px" height="70px">
+          </div>
+          <div class="user-info">
+            <p>Team: {{team.name}}<p>
+            <p>Owner: {{team.owner.ign}}<p>
+            <p>Location: {{team.location}}<p>
+            <p>Members: {{team.members.length}}</p>
+          </div>
+        </div>
+        <p>Want to create your own team? Click <a ui-sref="create-team">here.</a></p>
+      </div>
+    </div>
+
+    <div ng-controller="UserController as vm" class="panel panel-default">
+      <div class="panel-body" style="padding:0px">
+      <h1>Recent Users</h1>
+        <div ng-repeat="user in vm.all.slice().reverse()" class="main-user-container">
+          <div class="user-image">
+            <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{user.profile_defaultId}}.png" width="70px" height="70px">
+          </div>
+          <div class="user-info">
+            <p>IGN: {{user.ign}}<p>
+            <p>Role: {{user.primary_role}}<p>
+            <p>Rank: {{user.tier}} {{user.division}}<p>
+            <p>Team: [ {{user.team.team_abbr}} ]</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
