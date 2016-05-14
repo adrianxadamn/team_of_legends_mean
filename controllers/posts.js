@@ -1,5 +1,4 @@
 // Require resource's model(s).
-var request = require('request');
 var User    = require('../models/user');
 var Post    = require("../models/post");
 

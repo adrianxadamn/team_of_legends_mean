@@ -7,7 +7,7 @@
         <div class="navbar-col1">
           <div><a ui-sref="home">Home</a></div>
           <div><a id="active" ui-sref="user-list">Users</a></div>
-          <div>Teams</div>
+          <div><a ui-sref="team-list">Teams</a></div>
         </div>
         <div class="navbar-col3">
           <div><a ui-sref="edit-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a></div>
@@ -49,7 +49,7 @@
   <div ng-controller="UserController as vm" class="main-column-two">
 
 <!-- Fix HTML & CSS LATER -->
-    <div class="post-list">
+    <div class="list">
       <div class="panel panel-default" style="margin-bottom:0px">
         <div class="panel-body" style="padding: 10px 10px 10px 10px">
           <div id="main-user-container" class="main-user-container">

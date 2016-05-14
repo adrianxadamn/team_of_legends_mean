@@ -44,6 +44,18 @@
       templateUrl: '/js/app/layouts/edit_profile.html',
       controller: "MainController",
       controllerAs: "vm"
+    })
+    .state('create-team', {
+      url: '/new_team',
+      templateUrl: '/js/app/layouts/new_team.html',
+      controller: "MainController",
+      controllerAs: "vm"
+    })
+    .state('team-list', {
+      url: '/teams',
+      templateUrl: 'js/app/layouts/teams.html',
+      controller: "MainController",
+      controllerAs: "vm"
     });
 
   $urlRouterProvider.otherwise("/");

@@ -37,7 +37,6 @@
 
     vm.submitPost = function(data) {
       $log.info("post:", vm.createPost);
-      $log.info("data:", data);
 
       postService
         .create(vm.createPost).then(
