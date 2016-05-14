@@ -32,7 +32,7 @@
             <p>IGN: {{vm.storeUserData.ign}}<p>
             <p>Role: {{vm.storeUserData.primary_role}}<p>
             <p>Rank: {{vm.storeUserData.tier}} {{vm.storeUserData.division}}<p>
-            <p>Team: [ {{vm.authService.currentUser().team.team_abbr}} ]</p>
+            <p>Team: [ {{vm.storeUserData.team.team_abbr}} ]</p>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
 
   </div>
 
-  <div ng-controller="UserController as vm" class="main-column-two">
+  <div class="main-column-two">
 
 <!-- Fix HTML & CSS LATER -->
     <div class="list">
@@ -60,7 +60,7 @@
               <p>IGN: {{vm.storeUserData.ign}}<p>
               <p>Role: {{vm.storeUserData.primary_role}}<p>
               <p>Rank: {{vm.storeUserData.tier}} {{vm.storeUserData.division}}<p>
-              <p>Team: {{vm.storeUserData.team}}</p>
+              <p>Team: {{vm.storeUserData.team.name}}</p>
             </div>
             <div ng-show="vm.toggleValue" id="user-info" class="user-info">
               <p>Wins: {{vm.storeUserData.wins}} / Losses: {{vm.storeUserData.losses}}<p>
@@ -71,7 +71,7 @@
             <div ng-show="vm.toggleValue" id="more-user-info">
               <p>Email: {{vm.storeUserData.email}}</p>
               <p>Description: {{vm.storeUserData.description}}</p>
-              <p>Champion Pool : {{vm.storeUserData.champion_pool}}</p>
+              <p>Champion Pool: {{vm.storeUserData.champion_pool}}</p>
               <p></p>
             </div>
           </div>
@@ -99,7 +99,7 @@
       </div>
     </div>
 
-    <div ng-controller="UserController as vm" class="panel panel-default">
+    <div class="panel panel-default">
       <div class="panel-body" style="padding:0px">
       <h1>Recent Users</h1>
         <div ng-repeat="user in vm.all.slice().reverse()" class="main-user-container">

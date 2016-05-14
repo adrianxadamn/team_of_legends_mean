@@ -136,14 +136,16 @@ function getUsers(req, res, next) {
 function getSpecificUser(req, res, next) {
   var ign = req.params.ign;
 
-  User.findOne({'ign': ign}).populate('team').exec()
-    .then(function(user) {
+  User.findOne({'ign': ign}).populate('team')
+    .exec(function(err, user) {
       if (err) {
         res.send(err);
       }
       res.json(user);
     });
+
 };
+
 
 
 module.exports = {
