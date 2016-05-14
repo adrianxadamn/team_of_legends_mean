@@ -29,10 +29,10 @@
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.storeUserData.profile_defaultId}}.png" width="70px" height="70px">
           </div>
           <div class="user-info">
-            <p>IGN: <a ui-sref="user-profile({username: vm.storeUserData.ign})">{{vm.storeUserData.ign}}</a><p>
-            <p>Role: {{vm.storeUserData.primary_role}}<p>
-            <p>Rank: {{vm.storeUserData.tier}} {{vm.storeUserData.division}}<p>
-            <p>Team: [ {{vm.storeUserData.team.team_abbr}} ]</p>
+            <p><b>IGN:</b> <a ui-sref="user-profile({username: vm.storeUserData.ign})">{{vm.storeUserData.ign}}</a><p>
+            <p><b>Role:</b> {{vm.storeUserData.primary_role}}<p>
+            <p><b>Rank:</b> {{vm.storeUserData.tier}} {{vm.storeUserData.division}}<p>
+            <p><b>Team:</b> [ {{vm.storeUserData.team.team_abbr}} ]</p>
           </div>
         </div>
       </div>
@@ -57,22 +57,21 @@
               <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.storeUserData.profile_defaultId}}.png" width="100px" height="100px">
             </div>
             <div ng-show="vm.toggleValue" id="user-info" class="user-info">
-              <p>IGN: {{vm.storeUserData.ign}}<p>
-              <p>Role: {{vm.storeUserData.primary_role}}<p>
-              <p>Rank: {{vm.storeUserData.tier}} {{vm.storeUserData.division}}<p>
-              <p>Team: {{vm.storeUserData.team.name}}</p>
+              <p><b>IGN:</b> {{vm.storeUserData.ign}}<p>
+              <p><b>Role:</b> {{vm.storeUserData.primary_role}}<p>
+              <p><b>Rank:</b> {{vm.storeUserData.tier}} {{vm.storeUserData.division}}<p>
+              <p><b>Team:</b> {{vm.storeUserData.team.name}}</p>
             </div>
             <div ng-show="vm.toggleValue" id="user-info" class="user-info">
-              <p>Wins: {{vm.storeUserData.wins}} / Losses: {{vm.storeUserData.losses}}<p>
-              <p>Win%: {{(vm.storeUserData.wins / (vm.storeUserData.losses + vm.storeUserData.wins)) * 100| number:0}}%<p>
-              <p>Transportation: {{vm.storeUserData.transportation}} <p>
-              <p>Location: {{vm.storeUserData.location}}</p>
+              <p><b>Wins:</b> {{vm.storeUserData.wins}} / Losses: {{vm.storeUserData.losses}}<p>
+              <p><b>Win%:</b> {{(vm.storeUserData.wins / (vm.storeUserData.losses + vm.storeUserData.wins)) * 100| number:0}}%<p>
+              <p><b>Transportation:</b> {{vm.storeUserData.transportation}} <p>
+              <p><b>Location:</b> {{vm.storeUserData.location}}</p>
             </div>
             <div ng-show="vm.toggleValue" id="more-user-info">
-              <p>Email: {{vm.storeUserData.email}}</p>
-              <p>Description: {{vm.storeUserData.description}}</p>
-              <p>Champion Pool: {{vm.storeUserData.champion_pool}}</p>
-              <p></p>
+              <p><b>Email:</b> {{vm.storeUserData.email}}</p>
+              <p><b>Description:</b> {{vm.storeUserData.description}}</p>
+              <p><b>Champion Pool:</b> {{vm.storeUserData.champion_pool}}</p>
             </div>
           </div>
         </div>
@@ -89,17 +88,17 @@
             <img id="user-profile-default" src="{{team.team_image}}" width="70px" height="70px">
           </div>
           <div class="user-info">
-            <p>Team: {{team.name}}<p>
-            <p>Owner: {{team.owner.ign}}<p>
-            <p>Location: {{team.location}}<p>
-            <p>Members: {{team.members.length}}</p>
+            <p><b>Team:</b> {{team.name}}<p>
+            <p><b>Owner:</b> {{team.owner.ign}}<p>
+            <p><b>Location:</b> {{team.location}}<p>
+            <p><b>Members:</b> {{team.members.length}}</p>
           </div>
         </div>
         <p>Want to create your own team? Click <a ui-sref="create-team">here.</a></p>
       </div>
     </div>
 
-    <div class="panel panel-default">
+    <div ng-controller="UserController as vm" class="panel panel-default">
       <div class="panel-body" style="padding:0px">
       <h1>Recent Users</h1>
         <div ng-repeat="user in vm.all.slice().reverse()" class="main-user-container">
@@ -107,10 +106,10 @@
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{user.profile_defaultId}}.png" width="70px" height="70px">
           </div>
           <div class="user-info">
-            <p><a ui-sref="user-profile({username: user.ign})">{{user.ign}}</a><p>
-            <p>Role: {{user.primary_role}}<p>
-            <p>Rank: {{user.tier}} {{user.division}}<p>
-            <p>Team: [ {{user.team.team_abbr}} ]</p>
+            <p><b>IGN:</b> <a ui-sref="user-profile({username: user.ign})">{{user.ign}}</a><p>
+            <p><b>Role:</b> {{user.primary_role}}<p>
+            <p><b>Rank:</b> {{user.tier}} {{user.division}}<p>
+            <p><b>Team:</b> [ {{user.team.team_abbr}} ]</p>
           </div>
         </div>
       </div>
