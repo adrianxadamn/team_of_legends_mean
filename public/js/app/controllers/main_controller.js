@@ -13,6 +13,8 @@
     var vm = this;
     vm.authService = authService;
 
+    $log.info('vm.authService.currentUser():', vm.authService.currentUser());
+
   };
 
 

@@ -127,7 +127,7 @@ function update(req, res, next) {
 };
 
 function getUsers(req, res, next) {
-  User.find({}).exec()
+  User.find({}).populate('team').exec()
     .then(function(users) {
       res.json(users);
     })
@@ -136,12 +136,13 @@ function getUsers(req, res, next) {
 function getSpecificUser(req, res, next) {
   var ign = req.params.ign;
 
-  User.findOne({'ign': ign}, function(err, user) {
-    if (err) {
-      res.send(err);
-    }
-    res.json(user);
-  });
+  User.findOne({'ign': ign}).populate('team').exec()
+    .then(function(user) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(user);
+    });
 };
 
 

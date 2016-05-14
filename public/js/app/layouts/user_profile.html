@@ -32,7 +32,7 @@
             <p>IGN: {{vm.storeUserData.ign}}<p>
             <p>Role: {{vm.storeUserData.primary_role}}<p>
             <p>Rank: {{vm.storeUserData.tier}} {{vm.storeUserData.division}}<p>
-            <p>Team: {{vm.storeUserData.team}}</p>
+            <p>Team: [ {{vm.authService.currentUser().team.team_abbr}} ]</p>
           </div>
         </div>
       </div>

@@ -21,11 +21,20 @@ function create(req, res, next) {
         .create(req.body)
         .then(function(team) {
 
+          var team = team;
+
           team.owner = user;
           team.save();
           console.log('team saved:', team);
-          res.json(team);
 
+          User.findById(req.decoded._id).exec()
+            .then(function(user) {
+              user.team = team;
+              user.save();
+
+              console.log('user saved:', user);
+              res.json(user);
+            })
         });
     });
 }

@@ -32,7 +32,7 @@
             <p>IGN: {{vm.authService.currentUser().ign}}<p>
             <p>Role: {{vm.authService.currentUser().primary_role}}<p>
             <p>Rank: {{vm.authService.currentUser().tier}} {{vm.authService.currentUser().division}}<p>
-            <p>Team: {{vm.authService.currentUser().team}}</p>
+            <p>Team: [ {{vm.authService.currentUser().team.team_abbr}} ]</p>
           </div>
         </div>
       </div>

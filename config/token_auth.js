@@ -15,6 +15,7 @@ module.exports = {
 // Defines the JWTs contents, or payload, given a user object. Make
 // changes to what your token looks like here.
 function extractPayload(user, options) {
+  console.log("user from token auth:", user);
   return {
     email: user.email,
     ign:  user.ign,
@@ -25,6 +26,7 @@ function extractPayload(user, options) {
     losses: user.losses,
     tier: user.tier,
     division: user.division,
+    team: user.team,
     _id: user._id,
     use:   [        // Can be used to authorize certain
       'public_api', // aspects of the API. (Ie: scopes…) This
@@ -60,7 +62,7 @@ function create(req, res, next) {
     return res.status(422).json(message);
   }
   User
-    .findOne({email: req.body.email}).exec()
+    .findOne({email: req.body.email}).populate('team').exec()
     .then(function(user) {
       if (!user || !user.verifyPasswordSync(req.body.password)) {
         var message = 'User not found or password incorrect.';
@@ -82,8 +84,9 @@ function create(req, res, next) {
  */
 function refresh(req, res, next) {
   User
-    .findById(req.decoded._id).exec()
+    .findById(req.decoded._id).populate('team').exec()
     .then(function(user) {
+      console.log("user from refresh:", user);
       var token = generateJwt(user);
 
       res.json({
