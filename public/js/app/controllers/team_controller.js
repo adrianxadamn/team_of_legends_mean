@@ -13,6 +13,10 @@
     var vm = this;
     vm.all = [];
 
+    var url = $location.url();
+    var urlTeamName = url.slice(18);
+    $log.info('urlTeamName:', urlTeamName);
+
     vm.submitTeam = function(data) {
       $log.info("team:", vm.createTeam);
 

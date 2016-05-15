@@ -27,6 +27,7 @@ router.post('/posts/', token.authenticate, postsController.createPost);
 // teams resource path:
 router.get('/teams/', teamsController.get);
 router.post('/teams/', token.authenticate, teamsController.create);
+router.get('/teams/:team_abbr', teamsController.getSpecificTeam);
 
 
 module.exports = router;

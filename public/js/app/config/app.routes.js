@@ -56,6 +56,12 @@
       templateUrl: 'js/app/layouts/teams.html',
       controller: "MainController",
       controllerAs: "vm"
+    })
+    .state('team-profile', {
+      url: 'profile?teamname',
+      templateUrl: '/js/app/layouts/team_profile.html',
+      controller: 'MainController',
+      controllerAs: 'vm'
     });
 
   $urlRouterProvider.otherwise("/");

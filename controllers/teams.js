@@ -40,9 +40,22 @@ function create(req, res, next) {
     });
 }
 
+function getSpecificTeam(req, res, next) {
+  var team_abbr = req.params.team_abbr.toUpperCase();
+  console.log("team_abbr:", team_abbr);
+
+  Team.findOne({'team_abbr': team_abbr}).populate('owner').populate('members')
+    .exec(function(err, team) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(team);
+    });
+};
 
 module.exports = {
   get: get,
-  create: create
+  create: create,
+  getSpecificTeam: getSpecificTeam
 
 };
