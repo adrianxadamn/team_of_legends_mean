@@ -58,7 +58,7 @@
       controllerAs: "vm"
     })
     .state('team-profile', {
-      url: 'profile?teamname',
+      url: '/teamprofile?team',
       templateUrl: '/js/app/layouts/team_profile.html',
       controller: 'MainController',
       controllerAs: 'vm'

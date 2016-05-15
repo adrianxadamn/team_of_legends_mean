@@ -50,20 +50,22 @@
 
 <!-- Fix HTML & CSS LATER -->
     <div class="list">
-      <div ng-repeat="team in vm.all" class="panel panel-default" style="margin-bottom:0px">
+      <div class="panel panel-default" style="margin-bottom:0px">
         <div class="panel-body" style="padding: 10px 10px 10px 10px">
           <div id="main-user-container" class="main-user-container">
             <div class="user-image">
-              <img id="user-profile-default" src="{{team.team_image}}" width="100px" height="100px">
+              <img id="user-profile-default" src="{{vm.storeTeamData.team_image}}" width="100px" height="100px">
             </div>
             <div id="user-info" class="user-info">
-              <p><b>Team:</b> {{team.name}}<p>
-              <p><b>Owner:</b> {{team.owner.ign}}<p>
-              <p><b>Location:</b> {{team.location}}<p>
-              <p><b>Members:</b> {{team.members.length}}</p>
+              <p><b>Team:</b> {{vm.storeTeamData.name}}<p>
+              <p><b>Team ABBR:</b> [ {{vm.storeTeamData.team_abbr}} ]<p>
+              <p><b>Owner:</b> {{vm.storeTeamData.owner.ign}}<p>
+              <p><b>Location:</b> {{vm.storeTeamData.location}}<p>
             </div>
-            <div class="actions">
-              <p><u><a ui-sref="user-profile({username: user.ign})">View Profile</a></u></p>
+            <div class="user-info">
+              <p><b>Members:</b> {{vm.storeTeamData.members.length}}</p>
+              <p>use vm.all and ng repeat to show list of members</p>
+              <p><b>Description:</b></p>
             </div>
           </div>
         </div>

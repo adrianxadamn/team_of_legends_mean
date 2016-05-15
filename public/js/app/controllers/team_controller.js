@@ -5,13 +5,15 @@
     .module('app')
     .controller('TeamController', TeamController);
 
-  TeamController.$inject = ["$log", "$state", "teamService", "$http"];
+  TeamController.$inject = ["$log", "$state", "teamService", "$http", "$location"];
 
-  function TeamController($log, $state, teamService, $http) {
+  function TeamController($log, $state, teamService, $http, $location) {
     $log.info("TeamController is in da house");
 
     var vm = this;
     vm.all = [];
+
+    vm.storeTeamData = {};
 
     var url = $location.url();
     var urlTeamName = url.slice(18);
@@ -32,7 +34,18 @@
 
     };
 
-    function getAllTeams() {
+    function getTeamInformation() {
+      $http
+        .get('/api/teams/' + urlTeamName)
+        .then(function(res) {
+          vm.storeTeamData = res.data;
+          $log.info("vm.storeTeamData:", vm.storeTeamData);
+        }, function(err) {
+          $log.info(err);
+        });
+    }
+
+    function getTeams() {
       $http
         .get('/api/teams')
         .then(function(res) {
@@ -43,7 +56,8 @@
         })
     }
 
-    getAllTeams();
+    getTeams();
+    getTeamInformation();
 
   }
 
