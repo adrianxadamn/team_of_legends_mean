@@ -51,11 +51,41 @@ function getSpecificTeam(req, res, next) {
       }
       res.json(team);
     });
-};
+}
+
+function addTeamMember(req, res, next) {
+  var user = req.body[0];
+  console.log("user:", user);
+  var team_abbr = req.params.team_abbr.toUpperCase();
+  console.log("team_abbr:", team_abbr);
+
+  Team.findOne({'team_abbr': team_abbr}).populate('owner').populate('members')
+    .exec(function(err, team) {
+      if (err) {
+        res.send(err);
+      }
+      team.members.push(user);
+      team.save();
+
+      var team = team;
+
+      console.log('updating and saving new team member:', team);
+
+      User.findOne({"ign": user.ign}).populate('team')
+        .exec(function(err, user) {
+          user.team = team;
+          user.save();
+          res.json(user);
+        })
+
+    });
+
+}
 
 module.exports = {
   get: get,
   create: create,
-  getSpecificTeam: getSpecificTeam
+  getSpecificTeam: getSpecificTeam,
+  addTeamMember: addTeamMember
 
 };

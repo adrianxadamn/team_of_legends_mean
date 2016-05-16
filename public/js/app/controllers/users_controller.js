@@ -5,14 +5,15 @@
     .module('app')
     .controller('UserController', UserController);
 
-  UserController.$inject = ["$log", "$http", "$state", "$location"];
+  UserController.$inject = ["$log", "$http", "$state", "$location", "teamService", "authService", "$window"];
 
-  function UserController($log, $http, $state, $location) {
+  function UserController($log, $http, $state, $location, teamService, authService, $window) {
     $log.info("UserController is in da house");
 
     var vm = this;
     vm.all = [];
-
+    vm.teamService = teamService;
+    vm.authService = authService;
     vm.toggleInfoValue = [];
     vm.toggleValue = true;
 
@@ -29,6 +30,17 @@
     vm.toggleEdit = function() {
       vm.toggleValue = !vm.toggleValue;
       $log.info("vm.toggleValue:", vm.toggleValue);
+    };
+
+    vm.addTeamMember = function(data, team) {
+      $log.info("user:", data);
+
+      teamService
+        .addTeamMember(data, team)
+        .then(function(res) {
+          $log.info("success:", res);
+          $window.location.reload();
+        })
     };
 
     vm.toggleInfo = function(num) {

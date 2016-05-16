@@ -77,8 +77,7 @@
               <p ng-show="vm.toggleInfoValue[$index]" ng-click="vm.toggleInfo($index)"><u><a href="">More Info</a></u></p>
               <p ng-hide="vm.toggleInfoValue[$index]" ng-click="vm.toggleInfo($index)"><u><a href="">Close</a></u></p>
               <p><u><a ui-sref="user-profile({username: user.ign})">View Profile</a></u></p>
-<!--               <p ng-click="vm.getUserInformation(user.ign)"><u>View Profile</u></p> -->
-              <p><u>Add to Team</u></p>
+              <p ng-click="vm.addTeamMember(user, vm.authService.currentUser().team.team_abbr)"><a href=""><u>Add to Team</u></a></p>
             </div>
           </div>
         </div>

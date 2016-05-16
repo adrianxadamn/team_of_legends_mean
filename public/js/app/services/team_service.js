@@ -11,7 +11,8 @@
     $log.info('teamService is in da house');
 
     var service = {
-      create: create
+      create: create,
+      addTeamMember: addTeamMember
     };
 
     return service;
@@ -27,6 +28,21 @@
       .then(function(res) {
           $log.info("success");
           return res;
+      });
+      return promise;
+    }
+
+    function addTeamMember(data, team) {
+      $log.info("user data:", data);
+      var array = [data, team];
+
+      var promise = $http({
+        method: 'PUT',
+        url: '/api/teams/' + team,
+        data: array
+      })
+      .then(function(res) {
+        $log.info("success");
       });
       return promise;
     }
