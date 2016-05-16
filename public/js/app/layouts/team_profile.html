@@ -21,16 +21,16 @@
 </div>
 
 <div class="main-container">
-  <div class="main-column-one">
+  <div ng-controller="TeamController as vm" class="main-column-one">
     <div class="panel panel-default">
       <div class="panel-body" style="padding:0px">
         <div class="main-user-container">
           <div class="user-image">
-            <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.authService.currentUser().profile_defaultId}}.png" width="70px" height="70px">
+            <img id="user-profile-default" src="{{vm.storeTeamData.team_image}}" width="70px" height="70px">
           </div>
           <div class="user-info">
-            <p><b>Team:</b> {{vm.storeTeamData.name}} [ {{vm.storeTeamData.team_abbr}} ]<p>
-            <p><b>Owner:</b> {{vm.storeTeamData.owner.ign}}<p>
+            <p><b>Team: </b><a ui-sref="team-profile({team: vm.storeTeamData.team_abbr})">{{vm.storeTeamData.name}}</a> [ {{vm.storeTeamData.team_abbr}} ]<p>
+            <p><b>Owner: </b><a ui-sref="user-profile({username: vm.storeTeamData.owner.ign})"> {{vm.storeTeamData.owner.ign}}</a><p>
             <p><b>Location:</b> {{vm.storeTeamData.location}}<p>
             <p><b>Members:</b> {{vm.storeTeamData.members.length}}</p>
           </div>

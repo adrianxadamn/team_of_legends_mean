@@ -64,19 +64,26 @@ function addTeamMember(req, res, next) {
       if (err) {
         res.send(err);
       }
-      team.members.push(user);
-      team.save();
 
-      var team = team;
+      if (user.team) {
+        return res.status(422).send('User already in a team');
+      } else {
+        team.members.push(user);
+        team.save();
 
-      console.log('updating and saving new team member:', team);
+        var team = team;
 
-      User.findOne({"ign": user.ign}).populate('team')
-        .exec(function(err, user) {
-          user.team = team;
-          user.save();
-          res.json(user);
-        })
+        console.log('updating and saving new team member:', team);
+
+        User.findOne({"ign": user.ign}).populate('team')
+          .exec(function(err, user) {
+            user.team = team;
+            user.save();
+            res.json(user);
+          });
+
+      };
+
 
     });
 

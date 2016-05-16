@@ -28,6 +28,7 @@ router.post('/posts/', token.authenticate, postsController.createPost);
 router.get('/teams/', teamsController.get);
 router.post('/teams/', token.authenticate, teamsController.create);
 router.get('/teams/:team_abbr', teamsController.getSpecificTeam);
+router.put('/teams/:team_abbr', teamsController.addTeamMember);
 
 
 module.exports = router;
