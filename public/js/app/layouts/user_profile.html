@@ -73,6 +73,9 @@
               <p><b>Description:</b> {{vm.storeUserData.description}}</p>
               <p><b>Champion Pool:</b> {{vm.storeUserData.champion_pool}}</p>
             </div>
+            <div class="actions">
+              <p ng-hide="vm.storeUserData.team.team_abbr" ng-click="vm.addTeamMember(vm.storeUserData, vm.authService.currentUser().team.team_abbr)"><a href=""><u>Add to Team</u></a></p>
+            </div>
           </div>
         </div>
       </div>

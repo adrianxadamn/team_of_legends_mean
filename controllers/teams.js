@@ -65,9 +65,6 @@ function addTeamMember(req, res, next) {
         res.send(err);
       }
 
-      if (user.team) {
-        return res.status(422).send('User already in a team');
-      } else {
         team.members.push(user);
         team.save();
 
@@ -82,7 +79,6 @@ function addTeamMember(req, res, next) {
             res.json(user);
           });
 
-      };
 
 
     });
