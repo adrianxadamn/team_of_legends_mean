@@ -32,7 +32,7 @@
             <p><b>IGN:</b> <a ui-sref="user-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a><p>
             <p><b>Role:</b> {{vm.authService.currentUser().primary_role}}<p>
             <p><b>Rank:</b> {{vm.authService.currentUser().tier}} {{vm.authService.currentUser().division}}<p>
-            <p><b>Team:</b> [ {{vm.authService.currentUser().team.team_abbr}} ]</p>
+            <p><b>Team:</b> <a ui-sref="team-profile({team: vm.authService.currentUser().team.team_abbr})">[ {{vm.authService.currentUser().team.team_abbr}} ]</a></p>
           </div>
         </div>
       </div>
@@ -97,8 +97,8 @@
             <img id="user-profile-default" src="{{team.team_image}}" width="70px" height="70px">
           </div>
           <div class="user-info">
-            <p><b>Team:</b> {{team.name}}<p>
-            <p><b>Owner:</b> {{team.owner.ign}}<p>
+            <p><b>Team: </b><a ui-sref="team-profile({team: team.team_abbr})">{{team.name}}</a></p>
+            <p><b>Owner: </b><a ui-sref="user-profile({username: team.owner.ign})">{{team.owner.ign}}</a><p>
             <p><b>Location:</b> {{team.location}}<p>
             <p><b>Members:</b> {{team.members.length}}</p>
           </div>
@@ -115,10 +115,10 @@
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{user.profile_defaultId}}.png" width="70px" height="70px">
           </div>
           <div class="user-info">
-            <p><b>IGN:</b> <a ui-sref="user-profile({username: user.ign})">{{user.ign}}</a><p>
+            <p><b>IGN: </b><a ui-sref="user-profile({username: user.ign})">{{user.ign}}</a><p>
             <p><b>Role:</b> {{user.primary_role}}<p>
             <p><b>Rank:</b> {{user.tier}} {{user.division}}<p>
-            <p><b>Team:</b> [ {{user.team.team_abbr}} ]</p>
+            <p><b>Team: </b><a ui-sref="team-profile({team: user.team.team_abbr})"> [ {{user.team.team_abbr}} ]</a></p>
           </div>
         </div>
       </div>
