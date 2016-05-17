@@ -79,11 +79,10 @@ function addTeamMember(req, res, next) {
             res.json(user);
           });
 
-
-
     });
 
 }
+
 
 module.exports = {
   get: get,

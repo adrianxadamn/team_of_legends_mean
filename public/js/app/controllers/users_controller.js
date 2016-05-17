@@ -40,7 +40,7 @@
         .then(function(res) {
           $log.info("success:", res);
           $window.location.reload();
-        })
+        });
     };
 
     vm.toggleInfo = function(num) {

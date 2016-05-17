@@ -64,6 +64,7 @@
             </div>
             <div class="actions">
               <p><u><a ui-sref="team-profile({team: team.team_abbr})">View Team Profile</a></u></p>
+              <p ng-hide="vm.authService.currentUser().team.team_abbr" ng-click="vm.joinTeam(vm.authService.currentUser(), team.team_abbr)"><a href=""><u>Join Team</u></a></p>
             </div>
           </div>
         </div>

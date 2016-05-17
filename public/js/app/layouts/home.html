@@ -69,7 +69,7 @@
         <div ng-click="vm.toggleContent($index)" class="panel-body">
           <p>Title: {{post.title}}</p>
           <p>Body: {{post.body}}</p>
-          <p>Author: <a ui-sref="user-profile({username: user.ign})">{{post.author.ign}}</a></p>
+          <p>Author: <a ui-sref="user-profile({username: post.author.ign})">{{post.author.ign}}</a></p>
           <p>Created At: {{post.createdAt | date:'MM/dd/yyyy h:mm:a'}}</p>
 <!--  Will add When a user can comment on a post
          <div>

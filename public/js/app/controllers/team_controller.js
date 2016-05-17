@@ -5,15 +5,17 @@
     .module('app')
     .controller('TeamController', TeamController);
 
-  TeamController.$inject = ["$log", "$state", "teamService", "$http", "$location"];
+  TeamController.$inject = ["$log", "$state", "teamService", "$http", "$location", "authService", "$window"];
 
-  function TeamController($log, $state, teamService, $http, $location) {
+  function TeamController($log, $state, teamService, $http, $location, authService, $window) {
     $log.info("TeamController is in da house");
 
     var vm = this;
     vm.all = [];
 
     vm.storeTeamData = {};
+    vm.teamService = teamService;
+    vm.authService = authService;
 
     var url = $location.url();
     var urlTeamName = url.slice(18);
@@ -32,6 +34,26 @@
             $log.info(err);
           })
 
+    };
+
+    vm.joinTeam = function(data, team) {
+      $log.info("user:", data);
+
+      teamService
+        .addTeamMember(data, team)
+        .then(function(res) {
+          $log.info("success:", res);
+        })
+        .then(function() {
+          return authService.refreshToken();
+        })
+        .then(function(newDecodedToken) {
+          $log.info('Team updated and token refreshed:', newDecodedToken);
+          $window.location.reload();
+        })
+        .catch(function(err) {
+          $log.info('Error:', err);
+        });
     };
 
     function getTeamInformation() {

@@ -67,6 +67,9 @@
               <p>use vm.all and ng repeat to show list of members</p>
               <p><b>Description:</b></p>
             </div>
+            <div class="actions">
+              <p ng-hide="vm.authService.currentUser().team.team_abbr" ng-click="vm.joinTeam(vm.authService.currentUser(), vm.storeTeamData.team_abbr)"><a href=""><u>Join Team</u></a></p>
+            </div>
           </div>
         </div>
       </div>
