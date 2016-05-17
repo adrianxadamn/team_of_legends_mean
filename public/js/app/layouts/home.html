@@ -84,11 +84,14 @@
 <!-- Fix HTML & CSS LATER -->
     <div class="list">
       <div ng-repeat="post in vm.all.slice().reverse()" class="panel panel-default" style="margin-bottom:0px">
-        <div ng-click="vm.toggleContent($index)" class="panel-body">
-          <p>Title: {{post.title}}</p>
-          <p>Body: {{post.body}}</p>
-          <p>Author: <a ui-sref="user-profile({username: post.author.ign})">{{post.author.ign}}</a></p>
-          <p>Created At: {{post.createdAt | date:'MM/dd/yyyy h:mm:a'}}</p>
+        <div ng-click="vm.toggleContent($index)" class="panel-body" style="padding:0px 20px 10px">
+          <h1 id="title">{{post.title}}</h1>
+          <div class="post-info">
+            <p><i>Author: <a ui-sref="user-profile({username: post.author.ign})">{{post.author.ign}}</a></i></p>
+            <p><i>Created At: {{post.createdAt | date:'MM/dd/yyyy h:mm:a'}}</i></p>
+          </div>
+          <br>
+          <p>{{post.body}}</p>
 <!--  Will add When a user can comment on a post
          <div>
             <p ng-hide="vm.toggleValue[$index]"> What's up!</p>

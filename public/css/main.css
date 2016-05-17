@@ -216,8 +216,17 @@ p {
   display: inline-block;
 }
 
-#more-user-info > p, .actions {
+#more-user-info > p, .actions, #title {
   text-align: left;
+}
+
+.list * p {
+  margin: -2px;
+  margin-right: 5px;
+}
+
+.post-info > p {
+  display: inline;
 }
 
 #more-user-info > p {
