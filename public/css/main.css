@@ -184,6 +184,14 @@ p {
   border-radius: 5px;
 }
 
+.twolinkcolumn {
+  display: flex;
+}
+.twolinkcolumn * li {
+  list-style-type: none;
+  margin: 5px 20px 0px;
+}
+
 /***Column 2 CSS****/
 /*******************/
 
@@ -205,8 +213,8 @@ p {
 #user-info > p {
   text-align: left;
   font-size: 20px;
-  margin-left: 5px;
-  margin-right: 20px;
+  margin-left: 1px;
+  margin-right: 10px;
 }
 
 #user-info {
@@ -238,6 +246,9 @@ p {
   text-align: center;
 }
 
+#create-team {
+  text-align: center;
+}
 
 /**Edit Profile CSS**/
 /*******************/
