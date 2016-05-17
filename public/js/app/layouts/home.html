@@ -41,7 +41,7 @@
 
     <div class="panel panel-default">
       <div class="panel-body" style="padding:0px; padding-bottom: 20px">
-        <h1>Related Links</h1>
+        <h1 id="heading">Related Links</h1>
         <div class="twolinkcolumn">
           <div>
           <li><a href="http://www.lolesports.com/en_US/">LoL eSports</a></li>
@@ -91,7 +91,7 @@
             <p><i>Created At: {{post.createdAt | date:'MM/dd/yyyy h:mm:a'}}</i></p>
           </div>
           <br>
-          <p>{{post.body}}</p>
+          <p id="body">{{post.body}}</p>
 <!--  Will add When a user can comment on a post
          <div>
             <p ng-hide="vm.toggleValue[$index]"> What's up!</p>
@@ -105,7 +105,7 @@
   <div class="main-column-three">
     <div ng-controller="TeamController as vm" class="panel panel-default">
       <div class="panel-body" style="padding:0px">
-      <h1>Recent Teams</h1>
+      <h1 id="heading">Recent Teams</h1>
         <div ng-repeat="team in vm.all.slice().reverse()" class="main-user-container">
           <div class="user-image">
             <img id="user-profile-default" src="{{team.team_image}}" width="70px" height="70px">
@@ -123,7 +123,7 @@
 
     <div ng-controller="UserController as vm" class="panel panel-default">
       <div class="panel-body" style="padding:0px">
-      <h1>Recent Users</h1>
+      <h1 id="heading">Recent Users</h1>
         <div ng-repeat="user in vm.all.slice().reverse()" class="main-user-container">
           <div class="user-image">
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{user.profile_defaultId}}.png" width="70px" height="70px">

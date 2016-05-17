@@ -229,6 +229,15 @@ p {
   display: inline;
 }
 
+.post-info {
+  margin-top: -10px;
+  margin-left: 5px;
+}
+
+#body {
+  margin: auto 3px;
+}
+
 #more-user-info > p {
   margin: -2px;
   font-size: 20px;
@@ -246,4 +255,11 @@ p {
   margin: 0px;
 }
 
-
+/*****Headings*****/
+/******************/
+#heading {
+  border-bottom: 1px solid gray;
+  margin-right: 25px;
+  margin-left: 25px;
+  padding-bottom: 20px;
+}
