@@ -38,10 +38,6 @@ body {
   margin: auto;
 }
 
-#landing-page {
-  text-align: center;
-}
-
 p {
   color: #333132;
 }
@@ -52,7 +48,6 @@ p {
 }
 
 .container {
-  /*background-color: blue;*/
   height: 80%;
   width: 100%;
   margin: auto;
@@ -66,49 +61,62 @@ p {
   border-right: 5px solid darkgoldenrod;
 }
 
+/*****DRY-CODE*****/
+/******************/
+.panel * h1, #create-team, #create-post, #landing-page,
+.navbar-buttons-container * a, .navbar-image {
+  text-align: center;
+}
+
+.main-column-one, .main-column-two, .main-column-three, .links {
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
 /******NAVBAR******/
 /******************/
 
-.navbar-container {
+.navbar-container, .navbar-container * a {
   height: 46px;
+}
+
+.navbar-container {
   border-bottom: 3px solid rgba(26, 44, 44, 1.0);
   background: black;
   position: fixed;
   width: 100%;
-  /*margin-top: -20px;*/
 }
 
 .navbar-buttons-container * a {
-  height: 46px;
   padding-top: 8px;
   width: 100px;
-  text-align: center;
 }
 
 .navbar-buttons-container * div, .navbar-buttons-container * a {
   display: inline-block;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
-  margin: auto 20px;
+/*  margin: auto 20px;*/
   color: #cfba6b;
+}
+
+.navbar-col1, .navbar-col3 {
+  position: absolute;
+  top: 0px;
 }
 
 .navbar-col1 {
   float: left;
-  position: absolute;
-  top: 0px;
   left: 8%;
 }
 
 .navbar-col3 {
   float: right;
-  position: absolute;
   right: 8%;
-  top: 0px;
 }
 
 .navbar-image {
-  text-align: center;
   width: 400px;
   margin: auto;
 }
@@ -117,8 +125,6 @@ p {
 /*************************/
 
 .dummy-container {
-  /*margin: 240px 100px auto 100px;*/
-  /*background-color: black;*/
   height: 60px;
 }
 
@@ -129,30 +135,21 @@ p {
   display: flex;
 }
 
+
 .main-column-one {
   flex: 1;
   order: 1;
-  border-radius: 5px;
-  margin-right: 10px;
-  /*background-color: white;*/
-/*  border: 2px solid darkgoldenrod;*/
 }
 
 .main-column-two {
   order: 2;
-  border-radius: 5px;
-  margin-right: 10px;
   flex: 2;
-  margin-bottom: 20px;
 }
 
 .main-column-three {
   order: 3;
-  border-radius: 5px;
-  margin-bottom: 20px;
   flex: 1;
 }
-
 
 /***Column 1 CSS****/
 /*******************/
@@ -179,9 +176,7 @@ p {
 
 .links {
   height: 95px;
-  background-color: white;
   border: 2px solid darkgoldenrod;
-  border-radius: 5px;
 }
 
 .twolinkcolumn {
@@ -217,42 +212,25 @@ p {
   margin-right: 10px;
 }
 
-#user-info {
+#user-info, #more-user-info {
   display: inline-block;
 }
 
-#more-user-info {
-  display: inline-block;
+#more-user-info > p, .actions {
+  text-align: left;
 }
 
 #more-user-info > p {
   margin: -2px;
   font-size: 20px;
-  text-align: left;
 }
 
 .actions > p {
   display: inline;
 }
 
-.actions {
-  text-align: left;
-}
-
-/***Column 3 CSS****/
-/*******************/
-
-.panel * h1 {
-  text-align: center;
-}
-
-#create-team, #create-post {
-  text-align: center;
-}
-
 /**Edit Profile CSS**/
 /*******************/
-
 
 #edit-user-info * p {
   margin-left: 0px;
