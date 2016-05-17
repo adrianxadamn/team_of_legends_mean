@@ -12,6 +12,11 @@
 
     var vm = this;
     vm.all = [];
+    vm.togglePostValue = true;
+
+    vm.togglePost = function() {
+      vm.togglePostValue = !vm.togglePostValue;
+    };
 
 
     ////////////////////////
