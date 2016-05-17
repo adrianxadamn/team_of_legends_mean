@@ -12,6 +12,7 @@
 
     var vm = this;
     vm.all = [];
+    vm.members = [];
 
     vm.storeTeamData = {};
     vm.teamService = teamService;
@@ -75,11 +76,23 @@
           $log.info(vm.all);
         }, function(err) {
           $log.info(err);
-        })
+        });
     }
+
+    // function getTeamMembers() {
+    //   $http
+    //     .get('/api/teams' + urlTeamName);
+    //     .then(function(res) {
+    //       vm.members = res.data;
+    //       $log.info('vm.members:', vm.members);
+    //     }, function(err) {
+    //       $log.info(err);
+    //     });
+    // }
 
     getTeams();
     getTeamInformation();
+    // getTeamMembers();
 
   }
 

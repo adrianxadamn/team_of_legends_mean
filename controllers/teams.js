@@ -44,7 +44,7 @@ function getSpecificTeam(req, res, next) {
   var team_abbr = req.params.team_abbr.toUpperCase();
   console.log("team_abbr:", team_abbr);
 
-  Team.findOne({'team_abbr': team_abbr}).populate('owner').populate('members')
+  Team.findOne({'team_abbr': team_abbr}).populate('owner').populate( { path:'members', populate: { path: 'team'}})
     .exec(function(err, team) {
       if (err) {
         res.send(err);

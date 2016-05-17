@@ -62,9 +62,25 @@
               <p><b>Location:</b> {{vm.storeTeamData.location}}<p>
               <p><b>Created On:</b> {{vm.storeTeamData.createdAt | date:'MM/dd/yyyy'}}<p>
             </div>
-            <div class="user-info">
+            <div id="user-info" class="user-info">
               <p><b>Members:</b> {{vm.storeTeamData.members.length}}</p>
-              <p>use vm.all and ng repeat to show list of members</p>
+              <div ng-repeat="member in vm.storeTeamData.members" id="main-user-container" class="main-user-container">
+                <div id="user-info" class="user-image">
+                  <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{member.profile_defaultId}}.png" width="100px" height="100px">
+                </div>
+                <div id="user-info" class="user-info">
+                  <p><b>IGN:</b> <a ui-sref="user-profile({username: member.ign})">{{member.ign}}</a><p>
+                  <p><b>Role:</b> {{member.primary_role}}<p>
+                  <p><b>Rank:</b> {{member.tier}} {{member.division}}<p>
+                  <p><b>Team: </b><a ui-sref="team-profile({team: member.team.team_abbr})">[ {{member.team.team_abbr}} ]</a></p>
+                </div>
+                <div id="user-info" class="user-info">
+                  <p><b>Wins:</b> {{member.wins}} / Losses: {{member.losses}}<p>
+                  <p><b>Win%:</b> {{(member.wins / (member.losses + member.wins)) * 100| number:0}}%<p>
+                  <p><b>Transportation:</b> {{member.transportation}} <p>
+                  <p><b>Location:</b> {{member.location}}</p>
+                </div>
+              </div>
               <p><b>Description:</b></p>
             </div>
             <div class="actions">
@@ -74,6 +90,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
   <div class="main-column-three">
