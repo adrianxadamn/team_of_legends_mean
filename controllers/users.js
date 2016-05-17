@@ -45,39 +45,85 @@ function create(req, res, next) {
         var division = jsonSummonerStats[getSummonerId][0].entries[0].division;
         var wins = jsonSummonerStats[getSummonerId][0].entries[0].wins;
         var losses = jsonSummonerStats[getSummonerId][0].entries[0].losses;
-      }
 
 
-      User
-        .create(req.body)
-        .then(function(user) {
-          //creates more of user's properties
-          //ater being added to the database
-          user.summonerId = getSummonerId;
-          user.profile_defaultId = jsonData[searchIgn].profileIconId;
+        var buildUriFindTopChampsPlayed = 'https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/'
+                                        + getSummonerId + '/ranked' + '?api_key=' + apiKey;
 
-          if (jsonSummonerStats[getSummonerId] === undefined) {
-            console.log("no ranked stats");
-          } else {
-            user.tier = tier;
-            user.division = division;
-            user.wins = wins;
-            user.losses = losses;
+        request.get(buildUriFindTopChampsPlayed, function(err, champs) {
+
+          var jsonTopChampsPlayed = JSON.parse(champs.body);
+
+          // console.log('jsonTopChampsPlayed:', util.inspect(jsonTopChampsPlayed.champions, false, null));
+
+          var allChamps = jsonTopChampsPlayed.champions;
+          var allChampsWithNumOfPlays = [];
+
+          for (var i = 0; i < allChamps.length; i++) {
+            allChampsWithNumOfPlays.push({"champId": allChamps[i].id, "champStats": allChamps[i].stats.totalSessionsPlayed });
           }
 
-          user.save();
-          res.json({
-            success: true,
-            message: 'Successfully created user.'
+          console.log("allChampsWithNumOfPlays:", allChampsWithNumOfPlays);
+
+          //to sort champions played from most played to least
+          allChampsWithNumOfPlays.sort(function(a, b) {
+            if (a.champStats > b.champStats) {
+              return -1;
+            } else if (a.champStats < b.champStats) {
+              return 1;
+            } else {
+              return 0;
+            }
+
           });
-        }).catch(function(err) {
-          if (err.message.match(/E11000/)) {
-            err.status = 409;
-          } else {
-            err.status = 422;
-          }
-          next(err);
+
+          console.log("sorted:", allChampsWithNumOfPlays);
+
+          //the final product of selecting top 9 champions for champion pool
+          var top9Champs = [];
+
+          for (var i = 1; i < 10; i++) {
+            top9Champs.push(allChampsWithNumOfPlays[i]);
+          };
+
+          console.log("top9Champs:", top9Champs);
+
+          // User
+          //   .create(req.body)
+          //   .then(function(user) {
+          //     //creates more of user's properties
+          //     //ater being added to the database
+          //     user.summonerId = getSummonerId;
+          //     user.profile_defaultId = jsonData[searchIgn].profileIconId;
+
+          //     if (jsonSummonerStats[getSummonerId] === undefined) {
+          //       console.log("no ranked stats");
+          //     } else {
+          //       user.tier = tier;
+          //       user.division = division;
+          //       user.wins = wins;
+          //       user.losses = losses;
+          //       user.champion_pool = top9Champs;
+          //     }
+
+          //     user.save();
+          //     res.json({
+          //       success: true,
+          //       message: 'Successfully created user.'
+          //     });
+          //   }).catch(function(err) {
+          //     if (err.message.match(/E11000/)) {
+          //       err.status = 409;
+          //     } else {
+          //       err.status = 422;
+          //     }
+          //     next(err);
+          //   });
+
         });
+      };
+
+
     })
   });
 };

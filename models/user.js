@@ -1,10 +1,10 @@
 var mongoose = require('mongoose'),
     debug    = require('debug')('app:models');
 
-championSchema = new mongoose.Schema({
-  name:             { type: String },
-  image:            { type: String }
-});
+// championSchema = new mongoose.Schema({
+//   name:             { type: String },
+//   image:            { type: String }
+// });
 
 var userSchema = new mongoose.Schema({
   email:              { type: String, required: true, unique: true},
@@ -20,7 +20,7 @@ var userSchema = new mongoose.Schema({
   profile_defaultId:  { type: String },
   tier:               { type: String },
   division:           { type: String },
-  champion_pool:      [championSchema],
+  champion_pool:      [],
   wins:               { type: Number, default: 0 },
   losses:             { type: Number, default: 0 },
   summonerId:         { type: String },
