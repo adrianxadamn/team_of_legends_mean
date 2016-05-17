@@ -31,7 +31,7 @@
           <div class="user-info">
             <p><b>IGN:</b> <a ui-sref="user-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a><p>
             <p><b>Role:</b> {{vm.authService.currentUser().primary_role}}<p>
-            <p><b>Rank:</b> {{vm.authService.currentUser().tier}} {{vm.authService.currentUser().division}}<p>
+            <p><b>Rank:</b> {{(vm.authService.currentUser().tier) || "UNRANKED"}} {{vm.authService.currentUser().division}}<p>
             <p><b>Team:</b> <a ui-sref="team-profile({team: vm.authService.currentUser().team.team_abbr})">[ {{vm.authService.currentUser().team.team_abbr}} ]</a></p>
           </div>
         </div>
@@ -72,7 +72,7 @@
             <div id="user-info" class="user-info">
               <p><b>IGN:</b> <a ui-sref="user-profile({username: user.ign})">{{user.ign}}</a><p>
               <p><b>Role:</b> {{user.primary_role}}<p>
-              <p><b>Rank:</b> {{user.tier}} {{user.division}}<p>
+              <p><b>Rank:</b> {{(user.tier) || "UNRANKED" }}  {{user.division}}<p>
               <p><b>Team: </b><a ui-sref="team-profile({team: user.team.team_abbr})">[ {{user.team.team_abbr}} ]</a></p>
             </div>
             <div id="user-info" class="user-info">
@@ -127,7 +127,7 @@
           <div class="user-info">
             <p><b>IGN: </b><a ui-sref="user-profile({username: user.ign})">{{user.ign}}</a><p>
             <p><b>Role:</b> {{user.primary_role}}<p>
-            <p><b>Rank:</b> {{user.tier}} {{user.division}}<p>
+            <p><b>Rank:</b> {{(user.tier) || "UNRANKED"}} {{user.division}}<p>
             <p><b>Team: </b><a ui-sref="team-profile({team: user.team.team_abbr})"> [ {{user.team.team_abbr}} ]</a></p>
           </div>
         </div>

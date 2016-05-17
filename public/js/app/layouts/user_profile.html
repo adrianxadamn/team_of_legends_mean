@@ -31,7 +31,7 @@
           <div class="user-info">
             <p><b>IGN:</b> <a ui-sref="user-profile({username: vm.storeUserData.ign})">{{vm.storeUserData.ign}}</a><p>
             <p><b>Role:</b> {{vm.storeUserData.primary_role}}<p>
-            <p><b>Rank:</b> {{vm.storeUserData.tier}} {{vm.storeUserData.division}}<p>
+            <p><b>Rank:</b> {{(vm.storeUserData.tier) || "UNRANKED" }} {{vm.storeUserData.division}}<p>
             <p><b>Team: </b><a ui-sref="team-profile({team: vm.storeUserData.team.team_abbr})">[ {{vm.storeUserData.team.team_abbr}} ]</a></p></p>
           </div>
         </div>
@@ -73,7 +73,7 @@
             <div ng-show="vm.toggleValue" id="user-info" class="user-info">
               <p><b>IGN:</b> <a ui-sref="user-profile({username: vm.storeUserData.ign})">{{vm.storeUserData.ign}}</a><p>
               <p><b>Role:</b> {{vm.storeUserData.primary_role}}<p>
-              <p><b>Rank:</b> {{vm.storeUserData.tier}} {{vm.storeUserData.division}}<p>
+              <p><b>Rank:</b> {{(vm.storeUserData.tier) || "UNRANKED"}} {{vm.storeUserData.division}}<p>
               <p><b>Team: </b><a ui-sref="team-profile({team: vm.storeUserData.team.team_abbr})">[ {{vm.storeUserData.team.team_abbr}} ]</a></p></p>
             </div>
             <div ng-show="vm.toggleValue" id="user-info" class="user-info">
@@ -125,7 +125,7 @@
           <div class="user-info">
             <p><b>IGN: </b><a ui-sref="user-profile({username: user.ign})">{{user.ign}}</a><p>
             <p><b>Role:</b> {{user.primary_role}}<p>
-            <p><b>Rank:</b> {{user.tier}} {{user.division}}<p>
+            <p><b>Rank:</b> {{(user.tier) || "UNRANKED"}} {{user.division}}<p>
             <p><b>Team: </b><a ui-sref="team-profile({team: user.team.team_abbr})"> [ {{user.team.team_abbr}} ]</a></p>
           </div>
         </div>
