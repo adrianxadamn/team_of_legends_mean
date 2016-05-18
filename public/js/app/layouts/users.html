@@ -127,7 +127,7 @@
     <div ng-controller="UserController as vm" class="panel panel-default">
       <div class="panel-body" style="padding:0px">
       <h1 id="heading">Recent Users</h1>
-        <div ng-repeat="user in vm.all.slice().reverse()" class="main-user-container">
+        <div ng-repeat="user in vm.all.slice().reverse() | limitTo:5" class="main-user-container">
           <div class="user-image">
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{user.profile_defaultId}}.png" width="70px" height="70px">
           </div>
