@@ -24,6 +24,8 @@
   <div class="main-column-one">
     <div class="panel panel-default">
       <div class="panel-body" style="padding:0px">
+      <!-- <img id="champion-profile-background" src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{vm.authService.currentUser().champion_pool[0].champName}}_1.jpg" style="background"> -->
+      <div id="champion-profile-background" style="background-image: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{vm.storeUserData.champion_pool[0].champName}}_1.jpg); background-size: cover"></div>
         <div class="main-user-container">
           <div class="user-image">
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.storeUserData.profile_defaultId}}.png" width="70px" height="70px">
@@ -85,7 +87,12 @@
             <div ng-show="vm.toggleValue" id="more-user-info">
               <p><b>Email:</b> {{vm.storeUserData.email}}</p>
               <p><b>Description:</b> {{vm.storeUserData.description}}</p>
-              <p><b>Champion Pool:</b> {{vm.storeUserData.champion_pool}}</p>
+              <p>
+                <b>Champion Pool:</b>
+                <p id="champion-pool" ng-repeat="champ in vm.storeUserData.champion_pool">
+                  <img id="champion-image" src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{champ.champName}}.png" width="100px" height="100px">
+                </p>
+              </p>
             </div>
             <div class="actions">
               <p ng-hide="vm.storeUserData.team.team_abbr" ng-click="vm.addTeamMember(vm.storeUserData, vm.authService.currentUser().team.team_abbr)"><a href=""><u>Add to Team</u></a></p>

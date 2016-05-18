@@ -24,6 +24,8 @@
   <div class="main-column-one">
     <div class="panel panel-default">
       <div class="panel-body" style="padding:0px">
+      <!-- <img id="champion-profile-background" src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{vm.authService.currentUser().champion_pool[0].champName}}_1.jpg" style="background"> -->
+      <div id="champion-profile-background" style="background-image: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{vm.authService.currentUser().champion_pool[0].champName}}_1.jpg); background-size: cover"></div>
         <div class="main-user-container">
           <div class="user-image">
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.authService.currentUser().profile_defaultId}}.png" width="70px" height="70px">
@@ -31,9 +33,8 @@
           <div class="user-info">
             <p><b>IGN:</b> <a ui-sref="user-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a><p>
             <p><b>Role:</b> {{vm.authService.currentUser().primary_role}}<p>
-            <p><b>Rank:</b> {{(vm.authService.currentUser().tier) || "UNRANKED" }} {{vm.authService.currentUser().division}}<p>
+            <p><b>Rank:</b> {{(vm.authService.currentUser().tier) || "UNRANKED"}} {{vm.authService.currentUser().division}}<p>
             <p><b>Team:</b> <a ui-sref="team-profile({team: vm.authService.currentUser().team.team_abbr})">[ {{vm.authService.currentUser().team.team_abbr}} ]</a></p>
-
           </div>
         </div>
       </div>

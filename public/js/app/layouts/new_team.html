@@ -24,6 +24,8 @@
   <div class="main-column-one">
     <div class="panel panel-default">
       <div class="panel-body" style="padding:0px">
+      <!-- <img id="champion-profile-background" src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{vm.authService.currentUser().champion_pool[0].champName}}_1.jpg" style="background"> -->
+      <div id="champion-profile-background" style="background-image: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{vm.authService.currentUser().champion_pool[0].champName}}_1.jpg); background-size: cover"></div>
         <div class="main-user-container">
           <div class="user-image">
             <img id="user-profile-default" src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/{{vm.authService.currentUser().profile_defaultId}}.png" width="70px" height="70px">
@@ -80,6 +82,10 @@
                 <div class="form-group">
                   <label>Team Image</label>
                   <input ng-model="vm.createTeam.team_image" type="text" class="form-control" placeholder="Team Image">
+                </div>
+                <div class="form-group">
+                  <label>Team Banner</label>
+                  <input ng-model="vm.createTeam.team_banner" type="text" class="form-control" placeholder="Team Banner">
                 </div>
                 <div class="form-group">
                   <label>Location</label>

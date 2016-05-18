@@ -27,6 +27,7 @@ function extractPayload(user, options) {
     tier: user.tier,
     division: user.division,
     team: user.team,
+    champion_pool: user.champion_pool,
     _id: user._id,
     use:   [        // Can be used to authorize certain
       'public_api', // aspects of the API. (Ie: scopes…) This

@@ -24,6 +24,8 @@
   <div ng-controller="TeamController as vm" class="main-column-one">
     <div class="panel panel-default">
       <div class="panel-body" style="padding:0px">
+      <!-- <img id="champion-profile-background" src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{vm.authService.currentUser().champion_pool[0].champName}}_1.jpg" style="background"> -->
+      <div id="champion-profile-background" style="background-image: url({{vm.storeTeamData.team_banner}}); background-size: cover"></div>
         <div class="main-user-container">
           <div class="user-image">
             <img id="user-profile-default" src="{{vm.storeTeamData.team_image}}" width="70px" height="70px">
@@ -95,7 +97,7 @@
                   <p><b>Location:</b> {{member.location}}</p>
                 </div>
               </div>
-              <p><b>Description:</b></p>
+              <p><b>Description: </b> {{vm.storeTeamData.description}}</p>
             </div>
             <div class="actions">
               <p ng-hide="vm.authService.currentUser().team.team_abbr" ng-click="vm.joinTeam(vm.authService.currentUser(), vm.storeTeamData.team_abbr)"><a href=""><u>Join Team</u></a></p>

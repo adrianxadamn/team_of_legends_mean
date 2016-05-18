@@ -5,6 +5,7 @@ var teamSchema = new mongoose.Schema({
   name:              { type: String, required: true, unique: true},
   team_abbr:         { type: String, required: true, unique: true, minlength: 2, maxlength: 3},
   team_image:        { type: String, required: true },
+  team_banner:       { type: String },
   location:          { type: String, required: true },
   description:       { type: String },
   owner:             {
