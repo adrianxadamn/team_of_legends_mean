@@ -84,7 +84,12 @@
             <div id="more-user-info" ng-hide="vm.toggleInfoValue[$index]">
               <p><b>Email:</b> {{user.email}}</p>
               <p><b>Description:</b> {{user.description}}</p>
-              <p><b>Champion Pool:</b> {{user.champion_pool}}</p>
+              <p>
+                <b>Champion Pool:</b>
+                <p ng-repeat="champ in user.champion_pool">
+                  <img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{champ.champName}}.png">
+                </p>
+              </p>
             </div>
             <div class="actions">
               <p ng-show="vm.toggleInfoValue[$index]" ng-click="vm.toggleInfo($index)"><u><a href="">More Info</a></u></p>

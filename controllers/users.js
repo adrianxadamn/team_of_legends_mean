@@ -98,8 +98,8 @@ function create(req, res, next) {
 
             request.get(buildUriFindTopChampsName, function(err, championName) {
               var jsonChampionName = JSON.parse(championName.body);
-
-              top9ChampionNames.push({"champName": jsonChampionName.name, "champStats": top9Champs[num].champStats});
+              var championName = jsonChampionName.name.replace(" ", "");
+              top9ChampionNames.push({"champName": championName, "champStats": top9Champs[num].champStats});
 
               num++;
 
