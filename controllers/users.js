@@ -82,51 +82,73 @@ function create(req, res, next) {
           //the final product of selecting top 9 champions for champion pool
           var top9Champs = [];
 
-          for (var i = 1; i < 10; i++) {
-            top9Champs.push(allChampsWithNumOfPlays[i]);
-          };
+          for (var k = 1; k < 10; k++) {
+            top9Champs.push(allChampsWithNumOfPlays[k]);
+          }
 
           console.log("top9Champs:", top9Champs);
 
-          // User
-          //   .create(req.body)
-          //   .then(function(user) {
-          //     //creates more of user's properties
-          //     //ater being added to the database
-          //     user.summonerId = getSummonerId;
-          //     user.profile_defaultId = jsonData[searchIgn].profileIconId;
+          var top9ChampionNames = [];
 
-          //     if (jsonSummonerStats[getSummonerId] === undefined) {
-          //       console.log("no ranked stats");
-          //     } else {
-          //       user.tier = tier;
-          //       user.division = division;
-          //       user.wins = wins;
-          //       user.losses = losses;
-          //       user.champion_pool = top9Champs;
-          //     }
+          getChampionName(0);
 
-          //     user.save();
-          //     res.json({
-          //       success: true,
-          //       message: 'Successfully created user.'
-          //     });
-          //   }).catch(function(err) {
-          //     if (err.message.match(/E11000/)) {
-          //       err.status = 409;
-          //     } else {
-          //       err.status = 422;
-          //     }
-          //     next(err);
-          //   });
+          function getChampionName(num) {
+            var buildUriFindTopChampsName = 'https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/'
+                                          + top9Champs[num].champId +'?champData=stats' + '&api_key=' + apiKey;
 
+            request.get(buildUriFindTopChampsName, function(err, championName) {
+              var jsonChampionName = JSON.parse(championName.body);
+
+              top9ChampionNames.push({"champName": jsonChampionName.name, "champStats": top9Champs[num].champStats});
+
+              num++;
+
+              if (num !== 9) {
+                getChampionName(num);
+              } else {
+                console.log("top9ChampionNames:", top9ChampionNames);
+                console.log("FUCK");
+                User
+                  .create(req.body)
+                  .then(function(user) {
+                    //creates more of user's properties
+                    //ater being added to the database
+                    user.summonerId = getSummonerId;
+                    user.profile_defaultId = jsonData[searchIgn].profileIconId;
+
+                    if (jsonSummonerStats[getSummonerId] === undefined) {
+                      console.log("no ranked stats");
+                    } else {
+                      user.tier = tier;
+                      user.division = division;
+                      user.wins = wins;
+                      user.losses = losses;
+                      user.champion_pool = top9ChampionNames;
+                    }
+
+                    user.save();
+                    res.json({
+                      success: true,
+                      message: 'Successfully created user.'
+                    });
+                  }).catch(function(err) {
+                    if (err.message.match(/E11000/)) {
+                      err.status = 409;
+                    } else {
+                      err.status = 422;
+                    }
+                    next(err);
+                  });
+              }
+
+            });
+
+          }
         });
-      };
-
-
-    })
+      }
+    });
   });
-};
+}
 
 
 function me(req, res, next) {
