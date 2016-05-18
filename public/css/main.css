@@ -10,8 +10,6 @@ body {
 
 #active, #active-username {
   background-color: rgba(26, 44, 44, 1.0);
-/*  border-right: 1px solid #496E91;
-  border-left: 1px solid #496E91;*/
   border-bottom: 1px solid rgba(26, 44, 44, 1.0);
 }
 
@@ -21,7 +19,7 @@ body {
 
 #landing-image {
   width: 80%;
-  /*margin-top: 100px;*/
+  margin-top: 10px;
   /*margin-bottom: 200px;*/
 }
 
@@ -33,13 +31,27 @@ body {
 
 .landing-page-container {
   background-color: black;
-/*  border: 1px solid darkgoldenrod;*/
   border-top: 5px solid darkgoldenrod;
   border-bottom: 5px solid darkgoldenrod;
   width: 100%;
   height: 104%;
-  /*text-align: center;*/
   margin: auto;
+}
+
+.opening-quote {
+  margin-top: 20px;
+  height: 10%;
+}
+
+.opening-quote > p {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 50px;
+  color: darkgoldenrod;
+}
+
+.opening-quote * a {
+  color: red;
+  text-decoration: underline;
 }
 
 p {
