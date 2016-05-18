@@ -21,7 +21,10 @@
       userService
         .create(vm.createUser).then(
           function() {
-            $state.go("home");
+
+            setTimeout(function() {
+              $state.go("home");
+            }, 3000)
           },
           function(err) {
             if (err.status === 409) {

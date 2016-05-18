@@ -29,13 +29,16 @@
         .create(vm.createTeam).then(
           function(response) {
             $log.info("response:", response);
-            $state.go('team-list');
-          },
-          function(err) {
-            $log.info(err);
           })
-
+          .then(function() {
+            return authService.refreshToken();
+          })
+          .then(function(newDecodedToken) {
+            $log.info('User updated and token refreshed:', newDecodedToken);
+            $state.go('team-list');
+          });
     };
+
 
     vm.joinTeam = function(data, team) {
       $log.info("user:", data);

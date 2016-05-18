@@ -103,7 +103,7 @@
             <p><b>Members:</b> {{team.members.length}}</p>
           </div>
         </div>
-        <p id="create-team">Want to create your own team? <br> Click <a ui-sref="create-team">here.</a></p>
+        <p ng-show="(vm.authService.currentUser().team === undefined)" id="create-team">Want to create your own team? <br> Click <a ui-sref="create-team">here.</a></p>
       </div>
     </div>
 
