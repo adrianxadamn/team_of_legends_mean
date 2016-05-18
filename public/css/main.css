@@ -8,11 +8,15 @@ body {
   line-height: 1;
 }
 
-#active {
+#active, #active-username {
   background-color: rgba(26, 44, 44, 1.0);
 /*  border-right: 1px solid #496E91;
   border-left: 1px solid #496E91;*/
   border-bottom: 1px solid rgba(26, 44, 44, 1.0);
+}
+
+.navbar-col3 * .session-username {
+  width: 150px;
 }
 
 #landing-image {

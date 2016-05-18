@@ -10,7 +10,7 @@
           <div><a ui-sref="team-list">Teams</a></div>
         </div>
         <div class="navbar-col3">
-          <div><a id="active" ui-sref="user-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a></div>
+          <div><a id="active" class="session-username" ui-sref="user-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a></div>
           <div ng-click="vm.authService.logOut()"><a ui-sref="landing_page">Log Out</a></div>
         </div>
       </div>
@@ -87,7 +87,13 @@
             <div ng-show="vm.toggleValue" id="more-user-info">
               <p><b>Email:</b> {{vm.authService.currentUser().email}}</p>
               <p><b>Description:</b> {{vm.authService.currentUser().description}}</p>
-              <p><b>Champion Pool:</b> {{vm.authService.currentUser().champion_pool}}</p>
+<!--               <p><b>Champion Pool:</b> {{vm.authService.currentUser().champion_pool}}</p>
+              <p>
+                <b>Champion Pool:</b>
+                <p id="champion-pool" ng-repeat="champ in vm.authService.currentUser().champion_pool">
+                  <img id="champion-image" src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{champ.champName}}.png" width="100px" height="100px">
+                </p>
+              </p> -->
             </div>
             <div ng-hide="vm.toggleValue" id="edit-user-info" class="user-info">
               <form ng-submit="vm.submitUpdate(vm.authService.currentUser())">

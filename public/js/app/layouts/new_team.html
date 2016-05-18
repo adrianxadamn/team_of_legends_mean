@@ -10,7 +10,7 @@
           <div><a id="active" ui-sref="team-list">Teams</a></div>
         </div>
         <div class="navbar-col3">
-          <div><a ui-sref="user-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a></div>
+          <div><a class="session-username" ui-sref="user-profile({username: vm.authService.currentUser().ign})">{{vm.authService.currentUser().ign}}</a></div>
           <div ng-click="vm.authService.logOut()"><a ui-sref="landing_page">Log Out</a></div>
         </div>
       </div>
