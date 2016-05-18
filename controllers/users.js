@@ -9,7 +9,7 @@ function create(req, res, next) {
   }
 
   var baseUriFindSummoner = 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/';
-  var searchIgn = req.body.ign;
+  var searchIgn = req.body.ign.replace(" ", "");
   var apiKey = 'da00a520-06f1-4359-a686-4f48691f19a4';
   var buildUriFindSummoner = baseUriFindSummoner + searchIgn + '?api_key=' + apiKey;
 
