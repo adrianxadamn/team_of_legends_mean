@@ -48,6 +48,8 @@
           function(response) {
             $log.info("response:", response);
             vm.all.push(response.data);
+            vm.createPost.title = "";
+            vm.createPost.body  = "";
           },
           function(err) {
             $log.info(err);
