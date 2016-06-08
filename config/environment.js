@@ -1,5 +1,7 @@
 var _ = require('lodash');
 
+require("dotenv").load();
+
 var localEnvVars = {
   TITLE:      'team_of_legends_mean',
   SAFE_TITLE: 'team_of_legends_mean',

@@ -2,6 +2,7 @@
 var request = require('request');
 var User    = require("../models/user");
 var util    = require("util");
+var env     = require("../config/environment");
 
 function create(req, res, next) {
   if (!req.body.password) {
@@ -10,7 +11,7 @@ function create(req, res, next) {
 
   var baseUriFindSummoner = 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/';
   var searchIgn = req.body.ign.replace(" ", "");
-  var apiKey = 'da00a520-06f1-4359-a686-4f48691f19a4';
+  var apiKey = process.env.apiKey;
   var buildUriFindSummoner = baseUriFindSummoner + searchIgn + '?api_key=' + apiKey;
 
   request.get(buildUriFindSummoner, function(err, data) {
